@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Robotics | Book Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p.subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .robot-animation {
+            width: 120px;
+            height: 120px;
+            margin: 1.5rem auto;
+            position: relative;
+        }
+        
+        .robot {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background: var(--light);
+            border-radius: 10px 10px 5px 5px;
+            left: 30px;
+            top: 20px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .robot-head {
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 8px 8px 0 0;
+            left: 10px;
+            top: -25px;
+        }
+        
+        .robot-eye {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            top: 8px;
+            animation: scan 4s infinite;
+        }
+        
+        .eye-left { left: 8px; }
+        .eye-right { left: 24px; }
+        
+        .robot-arm {
+            position: absolute;
+            width: 8px;
+            height: 30px;
+            background: var(--light);
+            top: 20px;
+            animation: wave 5s infinite;
+        }
+        
+        .arm-left { left: -8px; transform-origin: top right; }
+        .arm-right { right: -8px; transform-origin: top left; }
+        
+        .robot-leg {
+            position: absolute;
+            width: 8px;
+            height: 30px;
+            background: var(--light);
+            bottom: -30px;
+        }
+        
+        .leg-left { left: 15px; }
+        .leg-right { right: 15px; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes scan {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+        
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        nav a i {
+            margin-right: 8px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.2) 0%, rgba(52, 152, 219, 0) 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .concept-list {
+            list-style: none;
+        }
+        
+        .concept-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .concept-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .concept-list li i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .key-concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .concept-card h4 {
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .ai-diagram {
+            max-width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin: 3rem auto;
+            text-align: center;
+        }
+        
+        .diagram-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .flow-step {
+            width: 120px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flow-step:not(:last-child):after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 40px;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+        
+        .conclusion h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .conclusion-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p.subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .process-flow {
+                flex-direction: column;
+            }
+            
+            .flow-step:not(:last-child):after {
+                content: '↓';
+                right: 0;
+                left: 0;
+                top: auto;
+                bottom: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Artificial Intelligence for Robotics</h1>
+            <p class="subtitle">Your Guide to Building Intelligent Robots</p>
+            
+            <div class="robot-animation">
+                <div class="robot">
+                    <div class="robot-head">
+                        <div class="robot-eye eye-left"></div>
+                        <div class="robot-eye eye-right"></div>
+                    </div>
+                    <div class="robot-arm arm-left"></div>
+                    <div class="robot-arm arm-right"></div>
+                    <div class="robot-leg leg-left"></div>
+                    <div class="robot-leg leg-right"></div>
+                </div>
+            </div>
+            
+            <div class="book-meta">
+                <div class="meta-item"><i class="fas fa-user"></i> Francis X. Govers III</div>
+                <div class="meta-item"><i class="fas fa-calendar"></i> March 2024</div>
+                <div class="meta-item"><i class="fas fa-book"></i> 2nd Edition</div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#overview"><i class="fas fa-home"></i> Overview</a>
+            <a href="#module1"><i class="fas fa-cube"></i> Module 1</a>
+            <a href="#module2"><i class="fas fa-eye"></i> Module 2</a>
+            <a href="#module3"><i class="fas fa-route"></i> Module 3</a>
+            <a href="#conclusions"><i class="fas fa-lightbulb"></i> Conclusions</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="overview" class="intro">
+            <h2>About the Book</h2>
+            <p>This website offers a glimpse into the world of intelligent robotics, drawing on insights from the second edition of <span class="highlight">"Artificial Intelligence for Robotics"</span> by Francis X. Govers III. The book serves as a practical guide for robotics engineers and enthusiasts who are ready to advance their skills by applying <span class="highlight">Artificial Intelligence (AI)</span> and <span class="highlight">Machine Learning (ML)</span> techniques to real-world robot tasks.</p>
+            <p>The core objective of the book is to empower you with essential skills to efficiently operate robots using advanced AI/ML techniques such as <span class="highlight">Convolutional Neural Networks (CNNs)</span>, computer vision, object recognition, genetic algorithms, and reinforcement learning.</p>
+        </section>
+        
+        <h2 class="section-title">Core Concepts and Fundamental Lessons</h2>
+        
+        <section id="module1">
+            <h2 class="section-title">Module 1: Building Blocks for Robotics and AI</h2>
+            
+            <div class="key-concepts">
+                <div class="concept-card">
+                    <h4><i class="fas fa-robot"></i> The AI Robot Defined</h4>
+                    <p>Unlike regular robots programmed for pre-defined behaviors, an AI robot's software is designed to make decisions, learn, and adapt to its environment based on data from its sensors.</p>
+                </div>
+                
+                <div class="concept-card">
+                    <h4><i class="fas fa-question-circle"></i> When to Use AI</h4>
+                    <p>Employ AI/ML when you need your robot to operate robustly in a complex, dynamic real-world environment. Ideal for problems difficult or impossible to solve with traditional programming.</p>
+                </div>
+                
+                <div class="concept-card">
+                    <h4><i class="fas fa-history"></i> AI Development History</h4>
+                    <p>Many AI techniques were developed in the 1960s-70s. Their resurgence is due to faster computers, cheaper storage, and access to vast data through the internet.</p>
+                </div>
+                
+                <div class="concept-card">
+                    <h4><i class="fas fa-brain"></i> Narrow vs. General AI</h4>
+                    <p>The book focuses on narrow AI, which simulates thinking for specific applications, rather than general AI (a full artificial intelligent brain).</p>
+                </div>
+            </div>
+            
+            <div class="ai-diagram">
+                <h3 class="diagram-title">The OODA Loop: Core Decision-Making Process</h3>
+                <div class="process-flow">
+                    <div class="flow-step">
+                        <div class="step-circle">O</div>
+                        <h4>Observe</h4>
+                        <p>Gather data from environment</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-circle">O</div>
+                        <h4>Orient</h4>
+                        <p>Process and contextualize data</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-circle">D</div>
+                        <h4>Decide</h4>
+                        <p>Choose course of action</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-circle">A</div>
+                        <h4>Act</h4>
+                        <p>Execute the decision</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="module2">
+            <h2 class="section-title">Module 2: Perception, Learning, and Interaction</h2>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-eye"></i> Robot Perception</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li><i class="fas fa-project-diagram"></i> Object Recognition with CNNs</li>
+                            <li><i class="fas fa-graduation-cap"></i> Supervised Learning</li>
+                            <li><i class="fas fa-exchange-alt"></i> Transfer Learning</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Training Optimization</li>
+                            <li><i class="fas fa-chart-line"></i> Evaluating Performance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-hand-paper"></i> Robot Manipulation</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li><i class="fas fa-brain"></i> Reinforcement Learning (RL)</li>
+                            <li><i class="fas fa-table"></i> Q-learning</li>
+                            <li><i class="fas fa-dna"></i> Genetic Algorithms (GAs)</li>
+                            <li><i class="fas fa-arrows-alt"></i> Kinematics (FK & IK)</li>
+                            <li><i class="fas fa-route"></i> Path Planning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-comments"></i> Robot Interaction</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li><i class="fas fa-language"></i> Natural Language Processing</li>
+                            <li><i class="fas fa-microphone"></i> Speech-to-Text (STT)</li>
+                            <li><i class="fas fa-volume-up"></i> Text-to-Speech (TTS)</li>
+                            <li><i class="fab fa-android"></i> Mycroft AI Assistant</li>
+                            <li><i class="fas fa-memory"></i> Contextual Understanding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="module3">
+            <h2 class="section-title">Module 3: Advanced Concepts</h2>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-map-marked-alt"></i> Navigation & Path Planning</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li><i class="fas fa-location-arrow"></i> Localization</li>
+                            <li><i class="fas fa-map"></i> SLAM Algorithm</li>
+                            <li><i class="fas fa-road"></i> Mapless Navigation</li>
+                            <li><i class="fas fa-network-wired"></i> CNN for Driving</li>
+                            <li><i class="fas fa-sitemap"></i> Decision Trees</li>
+                            <li><i class="fas fa-forest"></i> Random Forests</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-smile"></i> Artificial Personality</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li><i class="fas fa-theater-masks"></i> Simulating Emotions</li>
+                            <li><i class="fas fa-heartbeat"></i> Emotion State Machine</li>
+                            <li><i class="fas fa-gamepad"></i> The Emotion Game</li>
+                            <li><i class="fas fa-user-friends"></i> Human Emotion Model</li>
+                            <li><i class="fas fa-comment-dots"></i> ELIZA-like Conversation</li>
+                            <li><i class="fas fa-history"></i> Context Memory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusions">
+            <div class="conclusion">
+                <h2>Module 4: Conclusions and Reflections</h2>
+                
+                <div class="conclusion-grid">
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-flag-checkered"></i> Project Completion</h3>
+                        <p>Set specific, measurable goals to determine when a robot design project is finished, avoiding endless "tinkering".</p>
+                    </div>
+                    
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-briefcase"></i> Careers in Robotics</h3>
+                        <p>Robotics is highly interdisciplinary, requiring skills from mechanical and electrical engineering to software development and psychology.</p>
+                    </div>
+                    
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> AI Reality Check</h3>
+                        <p>The author dismisses fears of AI taking over as exaggerated. AI systems currently lack "needs" or "ambitions" that would drive them to self-perpetuate.</p>
+                    </div>
+                    
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-dice"></i> Understanding AI Risk</h3>
+                        <p>AI systems are inherently non-deterministic and operate on probabilities. This makes them challenging for safety-critical applications without robust risk mitigation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Artificial Intelligence for Robotics</h3>
+            <p>Your Guide to Building Intelligent Robots</p>
+            
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="fas fa-book"></i> Purchase Book</a>
+            </div>
+            
+            <p>&copy; 2024 Book Summary Website. Based on "Artificial Intelligence for Robotics" by Francis X. Govers III.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add subtle animation to section titles when they come into view
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section-title, .module-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            observer.observe(el);
+        });
+        
+        // Add animation to key concept cards
+        document.querySelectorAll('.concept-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 500 + (index * 100));
+        });
+    </script>
+</body>
+</html>
