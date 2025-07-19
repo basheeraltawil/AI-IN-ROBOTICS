@@ -1000,32 +1000,44 @@ while robot_is_active:
         <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Footer Section -->
-    <footer class="bg-[#18317c] py-6 mt-12 text-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="flex items-center mb-4 md:mb-0">
+   <!-- Footer Section -->
+<footer class="bg-[#18317c] py-8 mt-12 text-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col items-center text-center">
+            <!-- Logo and Copyright -->
+            <div class="flex flex-col items-center mb-6">
+                <div class="bg-white/20 p-2 rounded-lg mb-3">
                     <img src="logo.png" 
                          alt="AIBOMECH Logo" 
-                         class="h-12 mr-3">
-                    <span class="text-white">© 2025 AIBOMECH</span>
+                         class="h-12">
                 </div>
-                <div class="flex space-x-4">
-                    <a href="https://www.linkedin.com/company/aibomech/" 
-                       target="_blank" 
-                       class="text-white hover:text-blue-300 transition-colors">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
-                       target="_blank" 
-                       class="text-white hover:text-red-300 transition-colors">
-                        <i class="fab fa-youtube text-2xl"></i>
-                    </a>
-                </div>
+                <span class="text-white text-lg">© 2025 AIBOMECH</span>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="flex space-x-6 mb-6">
+                <a href="https://www.linkedin.com/company/aibomech/" 
+                   target="_blank" 
+                   class="text-white hover:text-blue-300 transition-colors text-3xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
+                   target="_blank" 
+                   class="text-white hover:text-red-300 transition-colors text-3xl">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            
+            <!-- Additional Links -->
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <a href="#" class="text-white/80 hover:text-white transition-colors">سياسة الخصوصية</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">شروط الاستخدام</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">اتصل بنا</a>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">الأسئلة الشائعة</a>
             </div>
         </div>
-    </footer>
-
+    </div>
+</footer>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
