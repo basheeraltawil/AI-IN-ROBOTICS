@@ -3,642 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الذكاء الاصطناعي في الروبوتات - شرح مبسط</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <title>الذكاء الاصطناعي في الروبوتات - دليلك الشامل لبناء الروبوتات الذكية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #1a365d;
-            --secondary: #2c5282;
-            --accent: #3182ce;
-            --light: #ebf8ff;
-            --dark: #0d2438;
-            --success: #38a169;
-            --warning: #dd6b20;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
-            color: #2d3748;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%);
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             direction: rtl;
             text-align: right;
         }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-content {
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
+            padding: 0 20px;
         }
-        
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-        
-        header p.subtitle {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            opacity: 0.9;
-        }
-        
-        .robot-animation {
-            width: 120px;
-            height: 120px;
-            margin: 1.5rem auto;
-            position: relative;
-        }
-        
-        .robot {
-            position: absolute;
-            width: 60px;
-            height: 80px;
-            background: var(--light);
-            border-radius: 10px 10px 5px 5px;
-            left: 30px;
-            top: 20px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .robot-head {
-            position: absolute;
-            width: 40px;
-            height: 30px;
-            background: var(--accent);
-            border-radius: 8px 8px 0 0;
-            left: 10px;
-            top: -25px;
-        }
-        
-        .robot-eye {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            top: 8px;
-            animation: scan 4s infinite;
-        }
-        
-        .eye-left { right: 8px; }
-        .eye-right { right: 24px; }
-        
-        .robot-arm {
-            position: absolute;
-            width: 8px;
-            height: 30px;
-            background: var(--light);
-            top: 20px;
-            animation: wave 5s infinite;
-        }
-        
-        .arm-left { left: -8px; transform-origin: top right; }
-        .arm-right { right: -8px; transform-origin: top left; }
-        
-        .robot-leg {
-            position: absolute;
-            width: 8px;
-            height: 30px;
-            background: var(--light);
-            bottom: -30px;
-        }
-        
-        .leg-left { right: 15px; }
-        .leg-right { left: 15px; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes scan {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(20deg); }
-            75% { transform: rotate(-20deg); }
-        }
-        
-        nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        nav ul {
+            list-style: none;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 2rem;
         }
-        
+
         nav a {
-            color: var(--primary);
+            color: white;
             text-decoration: none;
-            padding: 1rem 1.5rem;
-            font-weight: 600;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
         }
-        
+
         nav a:hover {
-            background: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
             color: white;
         }
-        
-        nav a i {
-            margin-left: 8px;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
-        
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .intro h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-        
-        .intro p {
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
             font-size: 1.1rem;
-            max-width: 800px;
-            margin: 1rem auto;
-            line-height: 1.8;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
         }
-        
-        .highlight {
-            background: linear-gradient(120deg, rgba(49, 130, 206, 0.2) 0%, rgba(49, 130, 206, 0) 100%);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
         }
-        
-        .section-title {
+
+        .content-section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content-section h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            margin: 3rem 0 2rem;
-            color: var(--primary);
             position: relative;
-            font-size: 2rem;
-            font-weight: 700;
         }
-        
-        .section-title:after {
+
+        .content-section h2:after {
             content: '';
             display: block;
-            width: 80px;
+            width: 100px;
             height: 4px;
-            background: var(--accent);
-            margin: 0.5rem auto;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 1rem auto;
             border-radius: 2px;
         }
-        
-        .modules-grid {
+
+        .content-section h3 {
+            color: #34495e;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-right: 4px solid #667eea;
+            padding-right: 1rem;
+        }
+
+        .content-section h4 {
+            color: #555;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .module-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .card-header {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1.5rem;
-        }
-        
-        .card-body {
-            padding: 1.5rem;
-        }
-        
-        .card-body h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .concept-list {
-            list-style: none;
-        }
-        
-        .concept-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .concept-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .concept-list li i {
-            color: var(--accent);
-            margin-left: 10px;
-            margin-top: 5px;
-        }
-        
-        .key-concepts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
             margin: 2rem 0;
         }
-        
-        .concept-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            border-right: 4px solid var(--accent);
-        }
-        
-        .concept-card h4 {
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .ai-diagram {
-            max-width: 100%;
-            background: white;
+
+        .card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            margin: 3rem auto;
-            text-align: center;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+            transition: all 0.3s ease;
         }
-        
-        .diagram-title {
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-size: 1.4rem;
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
         }
-        
-        .process-flow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .flow-step {
-            width: 120px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .flow-step:not(:last-child):after {
-            content: '←';
-            position: absolute;
-            left: -30px;
-            top: 40px;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-        
-        .step-circle {
-            width: 80px;
-            height: 80px;
-            background: var(--accent);
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
         }
-        
-        .conclusion {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 3rem;
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
             border-radius: 10px;
-            margin: 4rem 0;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
         }
-        
-        .conclusion h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+
+        .algorithm-box {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border-right: 5px solid #e17055;
         }
-        
-        .conclusion-grid {
+
+        .concept-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
-        
-        .conclusion-card {
-            background: rgba(255,255,255,0.1);
+
+        .concept-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-right: 3px solid #667eea;
+        }
+
+        .research-section {
+            background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+            color: #2d3436;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, #ffd79d, #ffa502);
+            color: #2d3436;
+        }
+
+        .science-box {
+            background: linear-gradient(135deg, #e8f4fd, #c3e7fd);
             padding: 1.5rem;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            margin: 1rem 0;
+            border-right: 5px solid #3498db;
         }
-        
-        .conclusion-card h3 {
-            margin-bottom: 1rem;
-            color: var(--light);
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            header p.subtitle {
+            .hero p {
                 font-size: 1.1rem;
             }
             
-            .process-flow {
-                flex-direction: column;
+            .content-section {
+                padding: 2rem;
+                margin: 1rem 0;
             }
             
-            .flow-step:not(:last-child):after {
-                content: '↑';
-                left: 0;
-                right: 0;
-                top: auto;
-                bottom: -30px;
-            }
-            
-            nav a {
-                padding: 0.8rem;
-                font-size: 0.9rem;
+            nav ul {
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1>الذكاء الاصطناعي في الروبوتات</h1>
-            <p class="subtitle">دليل مبسط لفهم كيفية عمل الروبوتات الذكية</p>
-            
-            <div class="robot-animation">
-                <div class="robot">
-                    <div class="robot-head">
-                        <div class="robot-eye eye-left"></div>
-                        <div class="robot-eye eye-right"></div>
-                    </div>
-                    <div class="robot-arm arm-left"></div>
-                    <div class="robot-arm arm-right"></div>
-                    <div class="robot-leg leg-left"></div>
-                    <div class="robot-leg leg-right"></div>
-                </div>
-            </div>
-        </div>
+        <nav class="container">
+            <ul>
+                <li><a href="#overview">نظرة عامة</a></li>
+                <li><a href="#fundamentals">الأساسيات</a></li>
+                <li><a href="#research">البحث العلمي</a></li>
+                <li><a href="#concepts">المفاهيم الأساسية</a></li>
+                <li><a href="#applications">التطبيقات</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <nav>
-        <div class="nav-container">
-            <a href="#overview"><i class="fas fa-home"></i> نظرة عامة</a>
-            <a href="#module1"><i class="fas fa-cube"></i> الأساسيات</a>
-            <a href="#module2"><i class="fas fa-eye"></i> الإدراك والتعلم</a>
-            <a href="#module3"><i class="fas fa-route"></i> الملاحة والتحكم</a>
-            <a href="#conclusions"><i class="fas fa-lightbulb"></i> التطبيقات</a>
+
+    <section class="hero">
+        <div class="container">
+            <h1>🤖 الذكاء الاصطناعي في الروبوتات</h1>
+            <p>دليلك الشامل لفهم وبناء الروبوتات الذكية</p>
+            <a href="#overview" class="cta-button">ابدأ رحلتك المعرفية</a>
         </div>
-    </nav>
-    
+    </section>
+
     <div class="container">
-        <section id="overview" class="intro">
-            <h2>ما هو الذكاء الاصطناعي في الروبوتات؟</h2>
-            <p>الروبوتات الذكية هي روبوتات يمكنها <span class="highlight">التعلم واتخاذ القرارات</span> بمفردها، وليست مجرد آلات تتبع تعليمات مبرمجة مسبقًا. تدمج هذه الروبوتات بين المكونات الميكانيكية والإلكترونية وخوارزميات الذكاء الاصطناعي التي تمكنها من:</p>
-            <p>• فهم البيئة المحيطة باستخدام الحواس الاصطناعية</p>
-            <p>• التعلم من التجارب السابقة</p>
-            <p>• التكيف مع المواقف الجديدة</p>
-            <p>• اتخاذ قرارات مستقلة لحل المشكلات</p>
-        </section>
-        
-        <h2 class="section-title">المفاهيم الأساسية والتطبيقات العملية</h2>
-        
-        <section id="module1">
-            <h2 class="section-title">الأساسيات: كيف تعمل الروبوتات الذكية؟</h2>
+        <section id="overview" class="content-section">
+            <h2>📖 نظرة عامة</h2>
+            <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem; color: #666;">
+                اكتشف عالم الروبوتات الذكية وتعلم كيفية دمج تقنيات الذكاء الاصطناعي في الأنظمة الروبوتية.
+                هذا الدليل الشامل يجمع بين النظرية العلمية والتطبيقات العملية.
+            </p>
             
-            <div class="key-concepts">
-                <div class="concept-card">
-                    <h4><i class="fas fa-brain"></i> الفرق بين الروبوت العادي والذكي</h4>
-                    <p>الروبوت العادي ينفذ أوامر محددة مسبقًا، أما الروبوت الذكي فيستشعر البيئة ويتعلم منها ويتخذ قرارات مستقلة بناءً على المعلومات التي يجمعها.</p>
+            <div class="grid">
+                <div class="card">
+                    <h4>🎯 ماذا ستتعلم</h4>
+                    <p>إتقان مهارات الذكاء الاصطناعي الأساسية مثل الشبكات العصبية التطبيقية، الرؤية الحاسوبية، التعرف على الكائنات، والخوارزميات الجينية للتطبيقات الروبوتية الحقيقية.</p>
                 </div>
                 
-                <div class="concept-card">
-                    <h4><i class="fas fa-cogs"></i> متى نستخدم الذكاء الاصطناعي؟</h4>
-                    <p>عندما يعمل الروبوت في بيئة معقدة ومتغيرة، حيث يصعب كتابة تعليمات لكل الاحتمالات. الذكاء الاصطناعي يمكن الروبوت من التعامل مع مواقف غير متوقعة.</p>
+                <div class="card">
+                    <h4>🔧 النهج العملي</h4>
+                    <p>تعلم من خلال أمثلة عملية وتطبيقات حقيقية، واكتسب مهارات قابلة للتطبيق في مختلف التحديات الروبوتية من المشاريع البسيطة إلى الأنظمة المعقدة.</p>
                 </div>
                 
-                <div class="concept-card">
-                    <h4><i class="fas fa-sync-alt"></i> حلقة القرار (OODA Loop)</h4>
-                    <p>هي العملية الأساسية التي يتبعها الروبوت الذكي: المراقبة، التوجيه (تحليل البيانات)، اتخاذ القرار، ثم التنفيذ. وتتكرر هذه الحلقة باستمرار.</p>
+                <div class="card">
+                    <h4>📚 المتطلبات الأساسية</h4>
+                    <p>معرفة أساسية بالبرمجة، مفاهيم الإلكترونيات، وأساسيات الذكاء الاصطناعي. مثالي للانتقال من المستوى المبتدئ إلى المستوى المهني.</p>
                 </div>
             </div>
-            
-            <div class="ai-diagram">
-                <h3 class="diagram-title">حلقة OODA: عملية اتخاذ القرار الأساسية</h3>
-                <div class="process-flow">
-                    <div class="flow-step">
-                        <div class="step-circle">م</div>
-                        <h4>مراقبة</h4>
-                        <p>جمع البيانات من البيئة</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-circle">ت</div>
-                        <h4>توجيه</h4>
-                        <p>تحليل البيانات وفهمها</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-circle">ق</div>
-                        <h4>قرار</h4>
-                        <p>اختيار أفضل إجراء</p>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-circle">ت</div>
-                        <h4>تنفيذ</h4>
-                        <p>تنفيذ القرار المتخذ</p>
-                    </div>
-                </div>
+
+            <div class="highlight">
+                <h4>🚀 من الهاوي إلى المحترف</h4>
+                <p>يمكّن هذا المحتوى مهندسي الروبوتات والمتحمسين من تطوير مهاراتهم من خلال تطبيق تقنيات الذكاء الاصطناعي المتطورة لإنشاء روبوتات قادرة على اتخاذ القرارات والتعلم والتكيف مع بيئتها - وليس فقط اتباع التعليمات المبرمجة مسبقاً.</p>
             </div>
         </section>
-        
-        <section id="module2">
-            <h2 class="section-title">الإدراك والتعلم: كيف تتعرف الروبوتات وتتعلم؟</h2>
+
+        <section id="fundamentals" class="content-section">
+            <h2>🧠 أساسيات الروبوتات الذكية</h2>
             
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-eye"></i> الإدراك الحسي</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="concept-list">
-                            <li><i class="fas fa-project-diagram"></i> التعرف على الأشكال باستخدام الشبكات العصبية</li>
-                            <li><i class="fas fa-image"></i> معالجة الصور وتحليل المشاهد</li>
-                            <li><i class="fas fa-microphone"></i> فهم الأصوات والكلام البشري</li>
-                            <li><i class="fas fa-wave-square"></i> تحليل البيانات من أجهزة الاستشعار</li>
-                        </ul>
-                    </div>
+            <h3>ما الذي يجعل الروبوت "ذكياً"؟</h3>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <strong>🤔 اتخاذ القرارات:</strong> الروبوتات الذكية تتخذ قرارات بناءً على بيانات المستشعرات، وليس فقط اتباع كود مكتوب مسبقاً
                 </div>
-                
-                <div class="module-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-graduation-cap"></i> التعلم الآلي</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="concept-list">
-                            <li><i class="fas fa-chart-line"></i> التعلم المعزز: التعلم بالمحاولة والخطأ</li>
-                            <li><i class="fas fa-dna"></i> الخوارزميات الجينية: محاكاة التطور الطبيعي</li>
-                            <li><i class="fas fa-exchange-alt"></i> نقل المعرفة: استخدام معرفة سابقة في مواقف جديدة</li>
-                            <li><i class="fas fa-network-wired"></i> الشبكات العصبية العميقة</li>
-                        </ul>
-                    </div>
+                <div class="concept-item">
+                    <strong>📈 التعلم:</strong> تحسن الأداء من خلال الخبرة والأمثلة المتراكمة
                 </div>
-                
-                <div class="module-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-comments"></i> التفاعل مع البشر</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="concept-list">
-                            <li><i class="fas fa-language"></i> فهم اللغة الطبيعية والأوامر الصوتية</li>
-                            <li><i class="fas fa-robot"></i> محاكاة الشخصية والتفاعل الاجتماعي</li>
-                            <li><i class="fas fa-memory"></i> تذكر السياق والمعلومات السابقة</li>
-                            <li><i class="fas fa-theater-masks"></i> التعبير عن المشاعر الاصطناعية</li>
-                        </ul>
-                    </div>
+                <div class="concept-item">
+                    <strong>🔄 التكيف:</strong> تعدل سلوكها وفقاً للبيئات المتغيرة
+                </div>
+                <div class="concept-item">
+                    <strong>✨ السلوك الناشئ:</strong> يمكنها إظهار أفعال لم تُبرمج صراحة لأدائها
+                </div>
+            </div>
+
+            <h3>متى يجب استخدام الذكاء الاصطناعي في الروبوتات؟</h3>
+            <div class="algorithm-box">
+                <h4>🎯 التطبيقات المثالية للذكاء الاصطناعي:</h4>
+                <p><strong>البيئات المعقدة والديناميكية:</strong> عندما يحتاج الروبوت للعمل في العالم الحقيقي مع ظروف غير متوقعة</p>
+                <p><strong>المشاكل الصعبة:</strong> المهام التي يصعب أو يستحيل حلها بالبرمجة التقليدية</p>
+                <p><strong>البرمجة بالمثال:</strong> عندما يكون من الأسهل إظهار ما يجب على الروبوت فعله بدلاً من برمجة كل احتمال</p>
+            </div>
+
+            <h3>حلقة OODA - اتخاذ القرارات في الروبوتات</h3>
+            <div class="code-example">
+while robot_is_active:
+    # ملاحظة - جمع بيانات المستشعرات
+    sensor_data = get_all_sensors()
+    
+    # توجه - معالجة وفهم البيانات
+    situation = analyze_environment(sensor_data)
+    
+    # قرر - اختيار أفضل مسار عمل
+    action = select_best_action(situation)
+    
+    # تصرف - تنفيذ القرار
+    execute_action(action)
+            </div>
+            <p><em>حلقة OODA تضمن تكيف الروبوت المستمر مع بيئته، تماماً كما يفعل البشر عند التنقل في العالم.</em></p>
+
+            <h3>الذكاء الاصطناعي المحدود مقابل العام</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🎯 الذكاء الاصطناعي المحدود (ما نستخدمه)</h4>
+                    <p>ذكاء متخصص لمهام محددة مثل التعرف على الكائنات، فهم الكلام، أو تخطيط المسارات. آمن، عملي، وفعال.</p>
+                </div>
+                <div class="card">
+                    <h4>🧠 الذكاء الاصطناعي العام (خيال علمي)</h4>
+                    <p>دماغ اصطناعي كامل بذكاء شبيه بالإنسان عبر جميع المجالات. غير قابل للتحقيق بالتكنولوجيا الحالية وغير مطلوب لمعظم التطبيقات الروبوتية.</p>
                 </div>
             </div>
         </section>
-        
-        <section id="module3">
-            <h2 class="section-title">الملاحة والتحكم: كيف تتحرك الروبوتات وتجد طريقها؟</h2>
+
+        <section id="research" class="content-section research-section">
+            <h2>🔬 الأسس العلمية والبحثية</h2>
             
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-map-marked-alt"></i> الملاحة والتوجه</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="concept-list">
-                            <li><i class="fas fa-location-arrow"></i> تحديد الموقع في البيئة (توطين)</li>
-                            <li><i class="fas fa-map"></i> بناء خرائط للبيئة أثناء الحركة (SLAM)</li>
-                            <li><i class="fas fa-road"></i> الملاحة بدون خرائط مسبقة</li>
-                            <li><i class="fas fa-route"></i> البحث عن أفضل المسارات</li>
-                        </ul>
-                    </div>
+            <h3>البحث العلمي في الروبوتات الذكية</h3>
+            <div class="science-box">
+                <h4>🧪 المناهج البحثية الحديثة:</h4>
+                <p><strong>البحث التجريبي:</strong> اختبار النظريات من خلال تجارب محكمة وقياس النتائج</p>
+                <p><strong>البحث التطبيقي:</strong> ترجمة الاكتشافات العلمية إلى تطبيقات عملية</p>
+                <p><strong>البحث متعدد التخصصات:</strong> دمج علوم الحاسوب، الهندسة، علم النفس، والأعصاب</p>
+            </div>
+
+            <h3>نظم التحكم الروبوتية - النهج العلمي</h3>
+            <h4>هندسة النظم المتكاملة</h4>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <strong>هيكلة الإدراك:</strong> العمليات ذات الأولوية المنخفضة والحرجة (مثل السلامة) تتفوق على المهام عالية المستوى (مثل تخطيط المهمة)
+                </div>
+                <div class="concept-item">
+                    <strong>التحكم في الزمن الحقيقي الناعم:</strong> حلقات توقيت ثابتة (30 إطار في الثانية) تضمن تشغيل روبوتي سلس
+                </div>
+                <div class="concept-item">
+                    <strong>متحكمات PID:</strong> متحكمات رياضية تقلل من الخطأ بين الحالات المرغوبة والفعلية للروبوت
+                </div>
+            </div>
+
+            <h4>منهجية علمية للتطوير</h4>
+            <div class="algorithm-box">
+                <strong>1. تحديد المشكلة أولاً</strong> - ما المهمة المحددة التي يجب على الروبوت إنجازها؟<br>
+                <strong>2. إنشاء حالات الاستخدام</strong> - وصف شكل النجاح من منظور المستخدم<br>
+                <strong>3. بناء القصص المصورة</strong> - تفصيل مرئي خطوة بخطوة لمهام الروبوت<br>
+                <strong>4. تحديد المتطلبات</strong> - مواصفات مفصلة للأجهزة والبرمجيات<br>
+                <strong>5. إدارة النطاق</strong> - تجنب "زحف الميزات" والتركيز على الوظائف الأساسية
+            </div>
+
+            <h3>الذكاء الاصطناعي في البحث العلمي</h3>
+            <div class="science-box">
+                <h4>🔍 كيف يساهم البحث العلمي:</h4>
+                <p><strong>تطوير خوارزميات جديدة:</strong> ابتكار طرق أكثر كفاءة لحل المشاكل المعقدة</p>
+                <p><strong>فهم السلوك البشري:</strong> دراسة كيفية تفاعل البشر مع الروبوتات</p>
+                <p><strong>تحسين الأداء:</strong> قياس وتحسين سرعة ودقة النظم الروبوتية</p>
+                <p><strong>الأمان والموثوقية:</strong> ضمان عمل الروبوتات بأمان في البيئات المختلفة</p>
+            </div>
+        </section>
+
+        <section id="concepts" class="content-section">
+            <h2>🔑 المفاهيم الأساسية مبسطة</h2>
+
+            <h3>تقنيات التعلم الآلي</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🧠 الشبكات العصبية</h4>
+                    <p><strong>ما هي:</strong> شبكات دماغية اصطناعية تتعلم الأنماط من البيانات</p>
+                    <p><strong>الاستخدام:</strong> التعرف على الصور، معالجة الكلام، اتخاذ القرارات</p>
+                    <p><strong>مثال:</strong> تعليم الروبوت التعرف على أنواع مختلفة من الألعاب</p>
                 </div>
                 
-                <div class="module-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-hands"></i> التحكم في الحركة</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="concept-list">
-                            <li><i class="fas fa-robot"></i> تحريك الأذرع واليدين بدقة</li>
-                            <li><i class="fas fa-cogs"></i> حساب الحركات اللازمة لتحقيق هدف معين</li>
-                            <li><i class="fas fa-balance-scale"></i> الحفاظ على التوازن أثناء الحركة</li>
-                            <li><i class="fas fa-running"></i> الحركة في بيئات معقدة</li>
-                        </ul>
-                    </div>
+                <div class="card">
+                    <h4>🎮 التعلم المعزز</h4>
+                    <p><strong>ما هو:</strong> التعلم من خلال التجربة والخطأ مع المكافآت والعقوبات</p>
+                    <p><strong>الاستخدام:</strong> التحكم في الذراع الروبوتية، المشي، لعب الألعاب</p>
+                    <p><strong>مثال:</strong> الروبوت يتعلم الإمساك بالأشياء من خلال الحصول على نقاط للنجاح</p>
+                </div>
+                
+                <div class="card">
+                    <h4>🧬 الخوارزميات الجينية</h4>
+                    <p><strong>ما هي:</strong> نهج تطوري "يُربي" حلولاً أفضل</p>
+                    <p><strong>الاستخدام:</strong> تخطيط المسارات، تحسين السلوك</p>
+                    <p><strong>مثال:</strong> تطوير حركات روبوتية مثلى عبر الأجيال</p>
                 </div>
             </div>
+
+            <h3>مؤشرات الأداء الرئيسية</h3>
+            <div class="algorithm-box">
+                <h4>📊 كيفية قياس نجاح الذكاء الاصطناعي:</h4>
+                <p><strong>الدقة (Precision):</strong> من بين جميع الاكتشافات، كم كانت صحيحة؟ (الجودة)</p>
+                <p><strong>الاستدعاء (Recall):</strong> من بين جميع الكائنات الفعلية، كم وجدنا؟ (التغطية)</p>
+                <p><strong>الصحة (Accuracy):</strong> الصحة الإجمالية للنظام</p>
+                <p><strong>نتيجة F1:</strong> مقياس متوازن يجمع بين الدقة والاستدعاء</p>
+            </div>
+
+            <h3>الخوارزميات الشائعة واستخداماتها</h3>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <strong>YOLOv8:</strong> كشف سريع للكائنات في الصور - "تنظر مرة واحدة فقط"
+                </div>
+                <div class="concept-item">
+                    <strong>أشجار القرار:</strong> عملية اتخاذ قرارات خطوة بخطوة
+                </div>
+                <div class="concept-item">
+                    <strong>الغابات العشوائية:</strong> أشجار قرارات متعددة تصوت على الإجابات
+                </div>
+                <div class="concept-item">
+                    <strong>Q-Learning:</strong> تعلم الأفعال المثلى من خلال جداول المكافآت
+                </div>
+                <div class="concept-item">
+                    <strong>مونت كارلو:</strong> استخدام العينات العشوائية لحل المشاكل المعقدة
+                </div>
+            </div>
+
+            <h3>التطبيقات في البحث العلمي</h3>
+            <div class="science-box">
+                <h4>🔬 مجالات البحث النشطة:</h4>
+                <p><strong>الطب الروبوتي:</strong> تطوير روبوتات جراحية دقيقة وأنظمة إعادة التأهيل</p>
+                <p><strong>الاستكشاف الفضائي:</strong> روبوتات قادرة على العمل في بيئات قاسية</p>
+                <p><strong>علوم البحار:</strong> غواصات روبوتية لاستكشاف أعماق المحيطات</p>
+                <p><strong>الزراعة الدقيقة:</strong> روبوتات زراعية تحسن الإنتاجية وتقلل استهلاك الموارد</p>
+            </div>
         </section>
-        
-        <section id="conclusions">
-            <h2 class="section-title">تطبيقات عملية في العالم الحقيقي</h2>
+
+        <section id="applications" class="content-section applications-section">
+            <h2>🌍 التطبيقات الحقيقية</h2>
             
-            <div class="conclusion">
-                <div class="conclusion-grid">
-                    <div class="conclusion-card">
-                        <h3><i class="fas fa-ambulance"></i> الروبوتات الطبية</h3>
-                        <p>عمليات جراحية دقيقة، مساعدة كبار السن، توصيل الأدوية داخل المستشفيات، وتحليل الصور الطبية.</p>
-                    </div>
-                    
-                    <div class="conclusion-card">
-                        <h3><i class="fas fa-industry"></i> التصنيع الذكي</h3>
-                        <p>روبوتات تعمل في المصانع، تتكيف مع التغيرات في خط الإنتاج وتتعلم من الأخطاء لتحسين الجودة.</p>
-                    </div>
-                    
-                    <div class="conclusion-card">
-                        <h3><i class="fas fa-car"></i> السيارات ذاتية القيادة</h3>
-                        <p>مركبات تستشعر الطريق، تتخذ قرارات في الوقت الحقيقي، وتتعلم من تجارب القيادة السابقة.</p>
-                    </div>
-                    
-                    <div class="conclusion-card">
-                        <h3><i class="fas fa-home"></i> المنازل الذكية</h3>
-                        <p>روبوتات منزلية تفهم الأوامر الصوتية، تتعرف على أفراد الأسرة، وتتكيف مع احتياجاتهم.</p>
-                    </div>
+            <h3>التطبيقات المنزلية والتجارية</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🏠 الروبوتات المنزلية</h4>
+                    <p>روبوتات التنظيف، المساعدين الشخصيين، رعاية الحيوانات الأليفة، مراقبة الأمن المنزلي</p>
+                </div>
+                <div class="card">
+                    <h4>🏭 الروبوتات الصناعية</h4>
+                    <p>أتمتة خطوط التجميع، مراقبة الجودة، إدارة المستودعات، اللوجستيات</p>
+                </div>
+                <div class="card">
+                    <h4>🚗 المركبات المستقلة</h4>
+                    <p>السيارات ذاتية القيادة، طائرات التوصيل بدون طيار، المعدات الزراعية، مركبات التعدين</p>
+                </div>
+                <div class="card">
+                    <h4>🏥 الروبوتات الطبية</h4>
+                    <p>المساعدون الجراحيون، رعاية المرضى، العلاج الطبيعي، توزيع الأدوية</p>
+                </div>
+            </div>
+
+            <h3>التطبيقات المتقدمة في البحث</h3>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <strong>🌊 الاستكشاف البحري:</strong> غواصات روبوتية لدراسة الحياة البحرية وتغير المناخ
+                </div>
+                <div class="concept-item">
+                    <strong>🚀 استكشاف الفضاء:</strong> مركبات جوالة على المريخ وروبوتات الصيانة الفضائية
+                </div>
+                <div class="concept-item">
+                    <strong>🌱 الزراعة الذكية:</strong> روبوتات الحصاد والري المتقدمة
+                </div>
+                <div class="concept-item">
+                    <strong>🏗️ البناء الآلي:</strong> روبوتات البناء والطباعة ثلاثية الأبعاد
+                </div>
+            </div>
+
+            <h3>الاتجاهات المستقبلية</h3>
+            <div class="highlight">
+                <h4>🔮 مستقبل الروبوتات الذكية</h4>
+                <p>نتجه نحو عصر جديد من الروبوتات التي تتكامل بسلاسة مع حياتنا اليومية. من الروبوتات الاجتماعية التي تتفاعل طبيعياً مع البشر، إلى الأنظمة الذكية التي تتعلم من تفاعلاتها وتتحسن باستمرار. المستقبل يحمل إمكانيات لا محدودة للتعاون بين الإنسان والآلة.</p>
+            </div>
+
+            <h3>التحديات والحلول</h3>
+            <div class="science-box">
+                <h4>⚖️ التحديات الأخلاقية والتقنية:</h4>
+                <p><strong>الأمان:</strong> ضمان عدم إلحاق الضرر بالبشر أو البيئة</p>
+                <p><strong>الخصوصية:</strong> حماية البيانات الشخصية في عصر الروبوتات الذكية</p>
+                <p><strong>العدالة:</strong> توفير الوصول العادل لتقنيات الروبوتات</p>
+                <p><strong>الشفافية:</strong> فهم كيفية اتخاذ الروبوتات لقراراتها</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>🎯 لمن هذا المحتوى</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>🔧 مهندسو الروبوتات</h4>
+                    <p>المهنيون الذين يسعون لإضافة قدرات الذكاء الاصطناعي إلى أنظمتهم الروبوتية</p>
+                </div>
+                <div class="card">
+                    <h4>🎓 الطلاب والأكاديميون</h4>
+                    <p>المتعلمون الأكاديميون الذين يسعون للحصول على معرفة عملية في مجال الروبوتات الذكية</p>
+                </div>
+                <div class="card">
+                    <h4>🛠️ الصانعون والهواة</h4>
+                    <p>المتحمسون للأعمال اليدوية المستعدون للتقدم من الروبوتات الأساسية إلى الأنظمة الذكية</p>
+                </div>
+                <div class="card">
+                    <h4>💼 المهنيون في الصناعة</h4>
+                    <p>المهندسون الذين ينتقلون من مجالات أخرى إلى صناعة الروبوتات</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h4>🚀 مستعد لبدء رحلتك في عالم الروبوتات الذكية؟</h4>
+                <p>سواء كنت تبني أول روبوت ذكي لك أو تعزز الأنظمة الموجودة بقدرات الذكاء الاصطناعي، هذا المحتوى يوفر المعرفة العملية والتقنيات المثبتة التي تحتاجها للنجاح في عالم الروبوتات الذكية سريع التطور.</p>
+            </div>
+
+            <h3>الموارد التعليمية الإضافية</h3>
+            <div class="concept-list">
+                <div class="concept-item">
+                    <strong>📚 مراجع علمية:</strong> أحدث الأوراق البحثية والدراسات في مجال الروبوتات
+                </div>
+                <div class="concept-item">
+                    <strong>💻 أدوات البرمجة:</strong> أطر العمل والمكتبات المفتوحة المصدر
+                </div>
+                <div class="concept-item">
+                    <strong>🔗 مجتمعات علمية:</strong> منتديات ومجموعات للباحثين والمطورين
+                </div>
+                <div class="concept-item">
+                    <strong>🏆 مسابقات وتحديات:</strong> فرص لاختبار وتطوير مهاراتك
                 </div>
             </div>
         </section>
-        
-        <section class="intro">
-            <h2>مستقبل الروبوتات الذكية</h2>
-            <p>مع تقدم تقنيات الذكاء الاصطناعي، سنرى المزيد من الروبوتات الذكية في حياتنا اليومية. هذه الروبوتات لن تحل محل البشر، بل ستكون <span class="highlight">مساعدين أذكياء</span> يعملون معنا لتحسين جودة الحياة وزيادة الإنتاجية.</p>
-            <p>التحديات المستقبلية تشمل تحسين قدرات التعلم، فهم المشاعر البشرية بدقة أكبر، وضمان الأمان والأخلاقيات في التعامل مع الروبوتات الذكية.</p>
+
+        <section class="content-section">
+            <h2>📊 إحصائيات ومعلومات مهمة</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>📈 نمو الصناعة</h4>
+                    <p>سوق الروبوتات العالمي ينمو بمعدل 20% سنوياً، مع توقعات بوصوله إلى 500 مليار دولار بحلول 2030</p>
+                </div>
+                <div class="card">
+                    <h4>🌍 التأثير العالمي</h4>
+                    <p>أكثر من 3 مليون روبوت صناعي يعمل حالياً حول العالم، وهذا الرقم يتضاعف كل 5 سنوات</p>
+                </div>
+                <div class="card">
+                    <h4>💼 فرص العمل</h4>
+                    <p>الطلب على مهندسي الروبوتات يزيد بنسبة 15% سنوياً، مما يجعله من أسرع المهن نمواً</p>
+                </div>
+                <div class="card">
+                    <h4>🔬 البحث والتطوير</h4>
+                    <p>أكثر من 50 مليار دولار يُستثمر سنوياً في بحوث الروبوتات والذكاء الاصطناعي</p>
+                </div>
+            </div>
+
+            <div class="science-box">
+                <h4>🏅 أهمية التعلم المستمر</h4>
+                <p>في مجال سريع التطور مثل الروبوتات الذكية، التعلم المستمر ليس مجرد ميزة - إنه ضرورة. التقنيات الجديدة تظهر شهرياً، والمهارات تتطور باستمرار. الاستثمار في تطوير معرفتك ومهاراتك هو الطريق الوحيد للبقاء في المقدمة.</p>
+            </div>
         </section>
     </div>
-    
+
     <!-- Footer Section -->
     <footer class="bg-[#18317c] py-6 mt-12 text-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="flex items-center mb-4 md:mb-0">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiwyQTEwLDEwIDAgMCwwIDIsMTJBMTAsMTAgMCAwLDAgMTIsMjJBMTAsMTAgMCAwLDAgMjIsMTJBMTAsMTAgMCAwLDAgMTIsMk0xMiwyMEM3LjU4LDIwIDQsMTYuNDIgNCwxMkM0LDcuNTggNy41OCw0IDEyLDRDMTYuNDIsNCAyMCw3LjU4IDIwLDEyQzIwLDE2LjQyIDE2LjQyLDIwIDEyLDIwTTEyLDEwQTIsMiAwIDAsMCAxMCwxMkEyLDIgMCAwLDAgMTIsMTRBMiwyIDAgMCwwIDE0LDEyQTIsMiAwIDAsMCAxMiwxME0xMiwxNkE0LDQgMCAwLDEgOCwxMkE0LDQgMCAwLDEgMTIsOEE0LDQgMCAwLDEgMTYsMTJBNCw0IDAgMCwxIDEyLDE2WiIvPjwvc3ZnPg==" 
+                    <img src="logo.png" 
                          alt="AIBOMECH Logo" 
                          class="h-12 mr-3">
                     <span class="text-white">© 2025 AIBOMECH</span>
@@ -658,69 +624,3 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Add animation to elements when they come into view
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        // Add CSS animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Observe elements
-        document.querySelectorAll('.module-card, .concept-card, .flow-step').forEach(el => {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
-        
-        // Robot eye animation
-        setInterval(() => {
-            document.querySelectorAll('.robot-eye').forEach(eye => {
-                eye.style.animation = 'none';
-                setTimeout(() => {
-                    eye.style.animation = 'scan 4s infinite';
-                }, 10);
-            });
-        }, 8000);
-    </script>
-</body>
-</html>
