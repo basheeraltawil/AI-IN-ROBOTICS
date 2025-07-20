@@ -225,6 +225,7 @@
             color: var(--secondary);
             font-weight: 500;
             margin-right: 5px;
+            font-family: monospace;
         }
         
         .section-title {
@@ -590,6 +591,92 @@
                 right: 20px;
             }
         }
+        
+        /* New styles for enhanced content */
+        .term-explanation {
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #f0fff4;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .tech-item {
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .neural-network {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: white;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .input-layer, .hidden-layer, .output-layer {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .input-layer { left: 10%; }
+        .hidden-layer { left: 45%; }
+        .output-layer { left: 80%; }
+        
+        .neuron {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .connection {
+            position: absolute;
+            background: rgba(49, 130, 206, 0.3);
+        }
+        
+        .ai-architecture {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .architecture-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .architecture-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -621,6 +708,7 @@
             <a href="#concepts"><i class="fas fa-brain"></i> المفاهيم الأساسية</a>
             <a href="#applications"><i class="fas fa-lightbulb"></i> التطبيقات</a>
             <a href="#future"><i class="fas fa-rocket"></i> المستقبل</a>
+            <a href="#resources"><i class="fas fa-book"></i> الموارد</a>
         </div>
     </nav>
     
@@ -637,22 +725,39 @@
                 <div class="card">
                     <h4><i class="fas fa-bullseye"></i> ماذا ستتعلم</h4>
                     <p>إتقان مهارات الذكاء الاصطناعي الأساسية مثل الشبكات العصبية التطبيقية، الرؤية الحاسوبية، التعرف على الكائنات، والخوارزميات الجينية للتطبيقات الروبوتية الحقيقية.</p>
+                    <div class="term-explanation">
+                        <strong>الرؤية الحاسوبية (Computer Vision):</strong> تكنولوجيا تمكن الروبوتات من "رؤية" وفهم بيئتها من خلال معالجة الصور والفيديو، باستخدام خوارزميات مثل YOLO وCNN.
+                    </div>
                 </div>
                 
                 <div class="card">
                     <h4><i class="fas fa-tools"></i> النهج العملي</h4>
                     <p>تعلم من خلال أمثلة عملية وتطبيقات حقيقية، واكتسب مهارات قابلة للتطبيق في مختلف التحديات الروبوتية من المشاريع البسيطة إلى الأنظمة المعقدة.</p>
+                    <div class="example-box">
+                        <div class="example-title">
+                            <i class="fas fa-robot"></i> مثال تطبيقي:
+                        </div>
+                        <p>روبوت تنظيف يستخدم خوارزميات تعلم معزز (Reinforcement Learning) لتحسين مسارات التنظيف بناءً على تجارب سابقة، مع تقليل استهلاك الطاقة بنسبة 25%.</p>
+                    </div>
                 </div>
                 
                 <div class="card">
                     <h4><i class="fas fa-book"></i> المتطلبات الأساسية</h4>
                     <p>معرفة أساسية بالبرمجة، مفاهيم الإلكترونيات، وأساسيات الذكاء الاصطناعي. مثالي للانتقال من المستوى المبتدئ إلى المستوى المهني.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">ROS</span>
+                        <span class="tech-item">TensorFlow</span>
+                        <span class="tech-item">PyTorch</span>
+                        <span class="tech-item">OpenCV</span>
+                    </div>
                 </div>
             </div>
 
             <div class="highlight-box">
                 <h4><i class="fas fa-rocket"></i> من الهاوي إلى المحترف</h4>
                 <p>يمكّن هذا المحتوى مهندسي الروبوتات والمتحمسين من تطوير مهاراتهم من خلال تطبيق تقنيات الذكاء الاصطناعي المتطورة لإنشاء روبوتات قادرة على اتخاذ القرارات والتعلم والتكيف مع بيئتها - وليس فقط اتباع التعليمات المبرمجة مسبقاً.</p>
+                <p><strong>التعلم المستمر (Continual Learning):</strong> تقنيات تسمح للروبوتات بالتعلم من التجارب الجديدة دون نسيان المعرفة السابقة، وهو أمر حاسم للتكيف مع البيئات المتغيرة.</p>
             </div>
         </section>
 
@@ -663,53 +768,79 @@
             <h3>ما الذي يجعل الروبوت "ذكياً"؟</h3>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-question"></i> اتخاذ القرارات:</strong> الروبوتات الذكية تتخذ قرارات بناءً على بيانات المستشعرات، وليس فقط اتباع كود مكتوب مسبقاً
+                    <strong><i class="fas fa-question"></i> اتخاذ القرارات (Decision Making):</strong> الروبوتات الذكية تتخذ قرارات بناءً على بيانات المستشعرات، وليس فقط اتباع كود مكتوب مسبقاً. تستخدم خوارزميات مثل أشجار القرار (Decision Trees) والشبكات العصبية (Neural Networks) لتحليل البيانات واختيار أفضل مسار عمل.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-chart-line"></i> التعلم:</strong> تحسن الأداء من خلال الخبرة والأمثلة المتراكمة
+                    <strong><i class="fas fa-chart-line"></i> التعلم (Learning):</strong> تحسن الأداء من خلال الخبرة والأمثلة المتراكمة باستخدام تقنيات التعلم الآلي (Machine Learning) مثل التعلم تحت الإشراف (Supervised Learning) والتعلم غير المشرف (Unsupervised Learning).
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-sync-alt"></i> التكيف:</strong> تعدل سلوكها وفقاً للبيئات المتغيرة
+                    <strong><i class="fas fa-sync-alt"></i> التكيف (Adaptation):</strong> تعدل سلوكها وفقاً للبيئات المتغيرة باستخدام تقنيات مثل التحكم التكيفي (Adaptive Control) والمرونة الحسابية (Computational Resilience).
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-magic"></i> السلوك الناشئ:</strong> يمكنها إظهار أفعال لم تُبرمج صراحة لأدائها
+                    <strong><i class="fas fa-magic"></i> السلوك الناشئ (Emergent Behavior):</strong> يمكنها إظهار أفعال لم تُبرمج صراحة لأدائها من خلال التفاعلات المعقدة بين مكونات النظام، وهو مفهوم أساسي في الذكاء السربى (Swarm Intelligence).
                 </div>
             </div>
 
             <h3>متى يجب استخدام الذكاء الاصطناعي في الروبوتات؟</h3>
             <div class="algorithm-box">
                 <h4><i class="fas fa-check-circle"></i> التطبيقات المثالية للذكاء الاصطناعي:</h4>
-                <p><strong>البيئات المعقدة والديناميكية:</strong> عندما يحتاج الروبوت للعمل في العالم الحقيقي مع ظروف غير متوقعة</p>
-                <p><strong>المشاكل الصعبة:</strong> المهام التي يصعب أو يستحيل حلها بالبرمجة التقليدية</p>
-                <p><strong>البرمجة بالمثال:</strong> عندما يكون من الأسهل إظهار ما يجب على الروبوت فعله بدلاً من برمجة كل احتمال</p>
+                <p><strong>البيئات المعقدة والديناميكية (Complex and Dynamic Environments):</strong> عندما يحتاج الروبوت للعمل في العالم الحقيقي مع ظروف غير متوقعة، مثل الروبوتات التي تعمل في مناطق الكوارث حيث تتغير البيئة باستمرار.</p>
+                <p><strong>المشاكل الصعبة (Hard Problems):</strong> المهام التي يصعب أو يستحيل حلها بالبرمجة التقليدية، مثل التعرف على الأشياء في ظروف إضاءة متغيرة أو التخطيط لمسار في بيئة غير معروفة.</p>
+                <p><strong>البرمجة بالمثال (Programming by Demonstration):</strong> عندما يكون من الأسهل إظهار ما يجب على الروبوت فعله بدلاً من برمجة كل احتمال، باستخدام تقنيات التعلم من المشاهدة (Imitation Learning).</p>
             </div>
 
             <h3>حلقة OODA - اتخاذ القرارات في الروبوتات</h3>
             <div class="code-example">
+# حلقة OODA (Observe, Orient, Decide, Act)
 while robot_is_active:
-    # ملاحظة - جمع بيانات المستشعرات
+    # ملاحظة (Observe) - جمع بيانات المستشعرات
     sensor_data = get_all_sensors()
     
-    # توجه - معالجة وفهم البيانات
+    # توجه (Orient) - معالجة وفهم البيانات
     situation = analyze_environment(sensor_data)
     
-    # قرر - اختيار أفضل مسار عمل
+    # قرر (Decide) - اختيار أفضل مسار عمل
     action = select_best_action(situation)
     
-    # تصرف - تنفيذ القرار
+    # تصرف (Act) - تنفيذ القرار
     execute_action(action)
             </div>
-            <p><em>حلقة OODA تضمن تكيف الروبوت المستمر مع بيئته، تماماً كما يفعل البشر عند التنقل في العالم.</em></p>
+            <p><em>حلقة OODA تضمن تكيف الروبوت المستمر مع بيئته، تماماً كما يفعل البشر عند التنقل في العالم. كل دورة تستغرق من 100 مللي ثانية إلى ثانية واحدة حسب التطبيق.</em></p>
 
             <h3>الذكاء الاصطناعي المحدود مقابل العام</h3>
             <div class="grid">
                 <div class="card">
-                    <h4><i class="fas fa-crosshairs"></i> الذكاء الاصطناعي المحدود (ما نستخدمه)</h4>
+                    <h4><i class="fas fa-crosshairs"></i> الذكاء الاصطناعي المحدود (Narrow AI)</h4>
                     <p>ذكاء متخصص لمهام محددة مثل التعرف على الكائنات، فهم الكلام، أو تخطيط المسارات. آمن، عملي، وفعال.</p>
+                    <div class="example-box">
+                        <strong>مثال:</strong> روبوت صناعي يستخدم رؤية حاسوبية لفرز المنتجات حسب الشكل واللون بدقة 99.8%.
+                    </div>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-brain"></i> الذكاء الاصطناعي العام (خيال علمي)</h4>
+                    <h4><i class="fas fa-brain"></i> الذكاء الاصطناعي العام (Artificial General Intelligence)</h4>
                     <p>دماغ اصطناعي كامل بذكاء شبيه بالإنسان عبر جميع المجالات. غير قابل للتحقيق بالتكنولوجيا الحالية وغير مطلوب لمعظم التطبيقات الروبوتية.</p>
+                    <div class="example-box">
+                        <strong>التحديات:</strong> يتطلب قدرات تفكير مجردة، فهم سياقي، وتعليم ذاتي عام - غير متوفر حالياً.
+                    </div>
+                </div>
+            </div>
+            
+            <h3>بنية النظام الروبوتي الذكي</h3>
+            <div class="ai-architecture">
+                <div class="architecture-item">
+                    <i class="fas fa-eye fa-2x"></i>
+                    <h4>طبقة الإدراك (Perception Layer)</h4>
+                    <p>معالجة بيانات المستشعرات (كاميرات، ليدار، إلخ) لفهم البيئة</p>
+                </div>
+                <div class="architecture-item">
+                    <i class="fas fa-cogs fa-2x"></i>
+                    <h4>طبقة المعالجة (Processing Layer)</h4>
+                    <p>تحليل البيانات واتخاذ القرارات باستخدام خوارزميات الذكاء الاصطناعي</p>
+                </div>
+                <div class="architecture-item">
+                    <i class="fas fa-bolt fa-2x"></i>
+                    <h4>طبقة التنفيذ (Actuation Layer)</h4>
+                    <p>ترجمة القرارات إلى حركات ميكانيكية وأوامر تحكم</p>
                 </div>
             </div>
         </section>
@@ -721,107 +852,173 @@ while robot_is_active:
             <h3>البحث العلمي في الروبوتات الذكية</h3>
             <div class="science-box">
                 <h4><i class="fas fa-microscope"></i> المناهج البحثية الحديثة:</h4>
-                <p><strong>البحث التجريبي:</strong> اختبار النظريات من خلال تجارب محكمة وقياس النتائج</p>
-                <p><strong>البحث التطبيقي:</strong> ترجمة الاكتشافات العلمية إلى تطبيقات عملية</p>
-                <p><strong>البحث متعدد التخصصات:</strong> دمج علوم الحاسوب، الهندسة، علم النفس، والأعصاب</p>
+                <p><strong>البحث التجريبي (Experimental Research):</strong> اختبار النظريات من خلال تجارب محكمة وقياس النتائج في بيئات محاكاة وواقعية.</p>
+                <p><strong>البحث التطبيقي (Applied Research):</strong> ترجمة الاكتشافات العلمية إلى تطبيقات عملية قابلة للتسويق.</p>
+                <p><strong>البحث متعدد التخصصات (Interdisciplinary Research):</strong> دمج علوم الحاسوب، الهندسة، علم النفس، والأعصاب لفهم وتطوير أنظمة أكثر ذكاءً.</p>
             </div>
 
             <h3>نظم التحكم الروبوتية - النهج العلمي</h3>
-            <h4>هندسة النظم المتكاملة</h4>
+            <h4>هندسة النظم المتكاملة (Integrated Systems Engineering)</h4>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-layer-group"></i> هيكلة الإدراك:</strong> العمليات ذات الأولوية المنخفضة والحرجة (مثل السلامة) تتفوق على المهام عالية المستوى (مثل تخطيط المهمة)
+                    <strong><i class="fas fa-layer-group"></i> هيكلة الإدراك (Perception Hierarchy):</strong> العمليات ذات الأولوية المنخفضة والحرجة (مثل السلامة) تتفوق على المهام عالية المستوى (مثل تخطيط المهمة) باستخدام أنظمة في الوقت الحقيقي (Real-time Systems).
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-clock"></i> التحكم في الزمن الحقيقي الناعم:</strong> حلقات توقيت ثابتة (30 إطار في الثانية) تضمن تشغيل روبوتي سلس
+                    <strong><i class="fas fa-clock"></i> التحكم في الزمن الحقيقي الناعم (Soft Real-time Control):</strong> حلقات توقيت ثابتة (30 إطار في الثانية) تضمن تشغيل روبوتي سلس مع السماح ببعض المرونة في التوقيت.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-calculator"></i> متحكمات PID:</strong> متحكمات رياضية تقلل من الخطأ بين الحالات المرغوبة والفعلية للروبوت
+                    <strong><i class="fas fa-calculator"></i> متحكمات PID (Proportional-Integral-Derivative):</strong> متحكمات رياضية تقلل من الخطأ بين الحالات المرغوبة والفعلية للروبوت، مع معادلات مثل:
+                    <div class="code-example" style="font-size: 0.9rem;">
+u(t) = K_p e(t) + K_i \int_{0}^{t} e(\tau) d\tau + K_d \frac{de(t)}{dt}
+                    </div>
+                    حيث u(t) هي إشارة التحكم، e(t) هي الخطأ، وK_p, K_i, K_d هي ثوابت الضبط.
                 </div>
             </div>
 
             <h4>منهجية علمية للتطوير</h4>
             <div class="algorithm-box">
-                <strong><i class="fas fa-1"></i> تحديد المشكلة أولاً</strong> - ما المهمة المحددة التي يجب على الروبوت إنجازها؟<br>
-                <strong><i class="fas fa-2"></i> إنشاء حالات الاستخدام</strong> - وصف شكل النجاح من منظور المستخدم<br>
-                <strong><i class="fas fa-3"></i> بناء القصص المصورة</strong> - تفصيل مرئي خطوة بخطوة لمهام الروبوت<br>
-                <strong><i class="fas fa-4"></i> تحديد المتطلبات</strong> - مواصفات مفصلة للأجهزة والبرمجيات<br>
-                <strong><i class="fas fa-5"></i> إدارة النطاق</strong> - تجنب "زحف الميزات" والتركيز على الوظائف الأساسية
+                <strong><i class="fas fa-1"></i> تحديد المشكلة أولاً (Problem Definition)</strong> - ما المهمة المحددة التي يجب على الروبوت إنجازها؟ مثل: "التعرف على 10 أنواع من الفاكهة وفرزها حسب النضج".<br>
+                <strong><i class="fas fa-2"></i> إنشاء حالات الاستخدام (Use Cases)</strong> - وصف شكل النجاح من منظور المستخدم: "يجب أن يعمل الروبوت في بيئة مستودع بدرجة حرارة 15-30°C مع دقة فرز 95%".<br>
+                <strong><i class="fas fa-3"></i> بناء القصص المصورة (Storyboarding)</strong> - تفصيل مرئي خطوة بخطوة لمهام الروبوت باستخدام أدوات مثل UML أو SysML.<br>
+                <strong><i class="fas fa-4"></i> تحديد المتطلبات (Requirements Specification)</strong> - مواصفات مفصلة للأجهزة (كاميرا بدقة 4K، معالج Jetson Xavier) والبرمجيات (Python 3.8, TensorFlow 2.4).<br>
+                <strong><i class="fas fa-5"></i> إدارة النطاق (Scope Management)</strong> - تجنب "زحف الميزات (Feature Creep)" والتركيز على الوظائف الأساسية لتسليم المنتج في الوقت المحدد.
             </div>
 
             <h3>الذكاء الاصطناعي في البحث العلمي</h3>
             <div class="science-box">
                 <h4><i class="fas fa-search"></i> كيف يساهم البحث العلمي:</h4>
-                <p><strong>تطوير خوارزميات جديدة:</strong> ابتكار طرق أكثر كفاءة لحل المشاكل المعقدة</p>
-                <p><strong>فهم السلوك البشري:</strong> دراسة كيفية تفاعل البشر مع الروبوتات</p>
-                <p><strong>تحسين الأداء:</strong> قياس وتحسين سرعة ودقة النظم الروبوتية</p>
-                <p><strong>الأمان والموثوقية:</strong> ضمان عمل الروبوتات بأمان في البيئات المختلفة</p>
+                <p><strong>تطوير خوارزميات جديدة (Algorithm Development):</strong> ابتكار طرق أكثر كفاءة لحل المشاكل المعقدة مثل خوارزميات التعلم العميق (Deep Learning) للتحكم في الحركة.</p>
+                <p><strong>فهم السلوك البشري (Human Behavior Understanding):</strong> دراسة كيفية تفاعل البشر مع الروبوتات لتحسين التصميمات باستخدام تقنيات مثل تتبع العين (Eye Tracking) وتحليل المشاعر (Sentiment Analysis).</p>
+                <p><strong>تحسين الأداء (Performance Optimization):</strong> قياس وتحسين سرعة ودقة النظم الروبوتية باستخدام معايير مثل زمن الاستجابة (Latency) ومعدل الخطأ (Error Rate).</p>
+                <p><strong>الأمان والموثوقية (Safety and Reliability):</strong> ضمان عمل الروبوتات بأمان في البيئات المختلفة باستخدام تقنيات مثل الفحص الرسمي (Formal Verification) والحدود الآمنة (Safety Boundaries).</p>
             </div>
+            
+            <h3>نماذج الشبكات العصبية في الروبوتات</h3>
+            <div class="diagram-container">
+                <div class="neural-network">
+                    <div class="input-layer">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                    <div class="hidden-layer">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                    <div class="output-layer">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center;"><em>شبكة عصبية نموذجية تستخدم في معالجة بيانات المستشعرات الروبوتية. الطبقة المدخلة (Input Layer) تستقبل البيانات الأولية، الطبقات المخفية (Hidden Layers) تقوم بالتحليل، والطبقة المخرجة (Output Layer) تنتج القرارات أو التوقعات.</em></p>
         </section>
 
         <!-- Enhanced Concepts Section -->
         <section id="concepts" class="content-section">
             <h2>🔑 المفاهيم الأساسية مبسطة</h2>
 
-            <h3>تقنيات التعلم الآلي</h3>
+            <h3>تقنيات التعلم الآلي (Machine Learning Techniques)</h3>
             <div class="grid">
                 <div class="card">
-                    <h4><i class="fas fa-network-wired"></i> الشبكات العصبية</h4>
-                    <p><strong>ما هي:</strong> شبكات دماغية اصطناعية تتعلم الأنماط من البيانات</p>
-                    <p><strong>الاستخدام:</strong> التعرف على الصور، معالجة الكلام، اتخاذ القرارات</p>
-                    <p><strong>مثال:</strong> تعليم الروبوت التعرف على أنواع مختلفة من الألعاب</p>
+                    <h4><i class="fas fa-network-wired"></i> الشبكات العصبية (Neural Networks)</h4>
+                    <p><strong>ما هي:</strong> شبكات دماغية اصطناعية تتعلم الأنماط من البيانات باستخدام طبقات مترابطة من العقد (Neurons).</p>
+                    <p><strong>الاستخدام:</strong> التعرف على الصور، معالجة الكلام، اتخاذ القرارات.</p>
+                    <p><strong>مثال تطبيقي:</strong> روبوت يستخدم شبكة عصبية تلافيفية (CNN) للتعرف على الأدوات في ورشة العمل بدقة 98%.</p>
+                    <div class="term-explanation">
+                        <strong>الشبكات العصبية التلافيفية (Convolutional Neural Networks - CNNs):</strong> نوع خاص من الشبكات العصبية مصمم لمعالجة البيانات الشبكية مثل الصور، يستخدم في تطبيقات الرؤية الحاسوبية للروبوتات.
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h4><i class="fas fa-gamepad"></i> التعلم المعزز</h4>
-                    <p><strong>ما هو:</strong> التعلم من خلال التجربة والخطأ مع المكافآت والعقوبات</p>
-                    <p><strong>الاستخدام:</strong> التحكم في الذراع الروبوتية، المشي، لعب الألعاب</p>
-                    <p><strong>مثال:</strong> الروبوت يتعلم الإمساك بالأشياء من خلال الحصول على نقاط للنجاح</p>
+                    <h4><i class="fas fa-gamepad"></i> التعلم المعزز (Reinforcement Learning)</h4>
+                    <p><strong>ما هو:</strong> التعلم من خلال التجربة والخطأ مع المكافآت والعقوبات، حيث يتعلم العامل (Agent) سياسة (Policy) لتعظيم المكافآت التراكمية.</p>
+                    <p><strong>الاستخدام:</strong> التحكم في الذراع الروبوتية، المشي، لعب الألعاب.</p>
+                    <p><strong>مثال تطبيقي:</strong> روبوت يتعلم الإمساك بالأشياء من خلال الحصول على نقاط للنجاح باستخدام خوارزمية Q-Learning.</p>
+                    <div class="code-example" style="font-size: 0.9rem;">
+# معادلة تحديث Q في التعلم المعزز
+Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
+                    </div>
+                    <p>حيث: s=الحالة، a=الإجراء، r=المكافأة، α=معدل التعلم، γ=عامل الخصم</p>
                 </div>
                 
                 <div class="card">
-                    <h4><i class="fas fa-dna"></i> الخوارزميات الجينية</h4>
-                    <p><strong>ما هي:</strong> نهج تطوري "يُربي" حلولاً أفضل</p>
-                    <p><strong>الاستخدام:</strong> تخطيط المسارات، تحسين السلوك</p>
-                    <p><strong>مثال:</strong> تطوير حركات روبوتية مثلى عبر الأجيال</p>
+                    <h4><i class="fas fa-dna"></i> الخوارزميات الجينية (Genetic Algorithms)</h4>
+                    <p><strong>ما هي:</strong> نهج تطوري "يُربي" حلولاً أفضل عبر الأجيال باستخدام عمليات الطفرة (Mutation) والعبور (Crossover).</p>
+                    <p><strong>الاستخدام:</strong> تخطيط المسارات، تحسين السلوك، تصميم الهياكل الروبوتية.</p>
+                    <p><strong>مثال تطبيقي:</strong> تطوير حركات روبوتية مثلى عبر 100 جيل، مع تحسين استهلاك الطاقة بنسبة 40%.</p>
+                    <div class="term-explanation">
+                        <strong>الاختيار الطبيعي الاصطناعي (Artificial Natural Selection):</strong> عملية تحاكي التطور البيولوجي، حيث تختار الحلول الأفضل وتطورها عبر الأجيال.
+                    </div>
                 </div>
             </div>
 
-            <h3>مؤشرات الأداء الرئيسية</h3>
+            <h3>مؤشرات الأداء الرئيسية (Key Performance Indicators)</h3>
             <div class="algorithm-box">
                 <h4><i class="fas fa-chart-bar"></i> كيفية قياس نجاح الذكاء الاصطناعي:</h4>
-                <p><strong>الدقة (Precision):</strong> من بين جميع الاكتشافات، كم كانت صحيحة؟ (الجودة)</p>
-                <p><strong>الاستدعاء (Recall):</strong> من بين جميع الكائنات الفعلية، كم وجدنا؟ (التغطية)</p>
-                <p><strong>الصحة (Accuracy):</strong> الصحة الإجمالية للنظام</p>
-                <p><strong>نتيجة F1:</strong> مقياس متوازن يجمع بين الدقة والاستدعاء</p>
+                <p><strong>الدقة (Precision):</strong> من بين جميع الاكتشافات، كم كانت صحيحة؟ (الجودة) - مثلاً: من بين 100 كائن تم التعرف عليه، 95 كان تصنيفها صحيحاً (دقة 95%).</p>
+                <p><strong>الاستدعاء (Recall):</strong> من بين جميع الكائنات الفعلية، كم وجدنا؟ (التغطية) - مثلاً: من بين 100 كائن موجود بالفعل، تم اكتشاف 90 (استدعاء 90%).</p>
+                <p><strong>الصحة (Accuracy):</strong> الصحة الإجمالية للنظام - (عدد التوقعات الصحيحة ÷ إجمالي التوقعات).</p>
+                <p><strong>نتيجة F1 (F1 Score):</strong> مقياس متوازن يجمع بين الدقة والاستدعاء - (2 × (الدقة × الاستدعاء) ÷ (الدقة + الاستدعاء)).</p>
             </div>
 
             <h3>الخوارزميات الشائعة واستخداماتها</h3>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-eye"></i> YOLOv8:</strong> كشف سريع للكائنات في الصور - "تنظر مرة واحدة فقط"
+                    <strong><i class="fas fa-eye"></i> YOLOv8 (You Only Look Once v8):</strong> كشف سريع للكائنات في الصور - "تنظر مرة واحدة فقط"، مثالي لأنظمة الروبوتات التي تتطلب سرعة معالجة عالية.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-tree"></i> أشجار القرار:</strong> عملية اتخاذ قرارات خطوة بخطوة
+                    <strong><i class="fas fa-tree"></i> أشجار القرار (Decision Trees):</strong> عملية اتخاذ قرارات خطوة بخطوة باستخدام بنية شجرية، تستخدم في أنظمة التصنيف البسيطة.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-tree"></i> الغابات العشوائية:</strong> أشجار قرارات متعددة تصوت على الإجابات
+                    <strong><i class="fas fa-tree"></i> الغابات العشوائية (Random Forests):</strong> أشجار قرارات متعددة تصوت على الإجابات، تقدم دقة أعلى من الأشجار المفردة.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-table"></i> Q-Learning:</strong> تعلم الأفعال المثلى من خلال جداول المكافآت
+                    <strong><i class="fas fa-table"></i> Q-Learning:</strong> تعلم الأفعال المثلى من خلال جداول المكافآت، أساسي في التعلم المعزز للروبوتات.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-dice"></i> مونت كارلو:</strong> استخدام العينات العشوائية لحل المشاكل المعقدة
+                    <strong><i class="fas fa-dice"></i> مونت كارلو (Monte Carlo Methods):</strong> استخدام العينات العشوائية لحل المشاكل المعقدة، مفيد في تخطيط المسارات في بيئات غير معروفة.
                 </div>
             </div>
 
             <h3>التطبيقات في البحث العلمي</h3>
             <div class="science-box">
                 <h4><i class="fas fa-flask"></i> مجالات البحث النشطة:</h4>
-                <p><strong>الطب الروبوتي:</strong> تطوير روبوتات جراحية دقيقة وأنظمة إعادة التأهيل</p>
-                <p><strong>الاستكشاف الفضائي:</strong> روبوتات قادرة على العمل في بيئات قاسية</p>
-                <p><strong>علوم البحار:</strong> غواصات روبوتية لاستكشاف أعماق المحيطات</p>
-                <p><strong>الزراعة الدقيقة:</strong> روبوتات زراعية تحسن الإنتاجية وتقلل استهلاك الموارد</p>
+                <p><strong>الطب الروبوتي (Robotic Medicine):</strong> تطوير روبوتات جراحية دقيقة مثل da Vinci Surgical System وأنظمة إعادة التأهيل الروبوتية.</p>
+                <p><strong>الاستكشاف الفضائي (Space Exploration):</strong> روبوتات قادرة على العمل في بيئات قاسية مثل المركبة الجوالة Perseverance على المريخ.</p>
+                <p><strong>علوم البحار (Marine Science):</strong> غواصات روبوتية مثل AUVs (Autonomous Underwater Vehicles) لاستكشاف أعماق المحيطات.</p>
+                <p><strong>الزراعة الدقيقة (Precision Agriculture):</strong> روبوتات زراعية مثل Agribot تحسن الإنتاجية وتقلل استهلاك الموارد.</p>
+            </div>
+            
+            <h3>معمارية الذكاء الاصطناعي في الروبوتات</h3>
+            <div class="process-flow">
+                <div class="flow-step">
+                    <div class="step-circle"><i class="fas fa-sensor"></i></div>
+                    <h4>المدخلات الحسية</h4>
+                    <p>كاميرات، ليدار، مستشعرات اللمس، إلخ</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-circle"><i class="fas fa-brain"></i></div>
+                    <h4>المعالجة</h4>
+                    <p>شبكات عصبية، معالجة الصور، تحديد الكائنات</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-circle"><i class="fas fa-project-diagram"></i></div>
+                    <h4>اتخاذ القرار</h4>
+                    <p>تخطيط المسار، التعلم المعزز، المنطق الضبابي</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-circle"><i class="fas fa-cogs"></i></div>
+                    <h4>التنفيذ</h4>
+                    <p>مشغلات، محركات، أنظمة تحكم</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-circle"><i class="fas fa-sync-alt"></i></div>
+                    <h4>التغذية الراجعة</h4>
+                    <p>تعزيز التعلم، تحسين الأداء</p>
+                </div>
             </div>
         </section>
 
@@ -832,46 +1029,74 @@ while robot_is_active:
             <h3>التطبيقات المنزلية والتجارية</h3>
             <div class="grid">
                 <div class="card">
-                    <h4><i class="fas fa-home"></i> الروبوتات المنزلية</h4>
-                    <p>روبوتات التنظيف، المساعدين الشخصيين، رعاية الحيوانات الأليفة، مراقبة الأمن المنزلي</p>
+                    <h4><i class="fas fa-home"></i> الروبوتات المنزلية (Home Robots)</h4>
+                    <p>روبوتات التنظيف مثل Roomba، المساعدين الشخصيين مثل Jibo، رعاية الحيوانات الأليفة، مراقبة الأمن المنزلي باستخدام كاميرات ذكية.</p>
+                    <div class="example-box">
+                        <strong>التقنية المستخدمة:</strong> خرائط SLAM (التعريف والتخطيط المتزامن) للتنقل، شبكات عصبية للتعرف على الأجسام وتجنب العوائق.
+                    </div>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-industry"></i> الروبوتات الصناعية</h4>
-                    <p>أتمتة خطوط التجميع، مراقبة الجودة، إدارة المستودعات، اللوجستيات</p>
+                    <h4><i class="fas fa-industry"></i> الروبوتات الصناعية (Industrial Robots)</h4>
+                    <p>أتمتة خطوط التجميع، مراقبة الجودة باستخدام الرؤية الحاسوبية، إدارة المستودعات، اللوجستيات باستخدام روبوتات AMRs (Autonomous Mobile Robots).</p>
+                    <div class="example-box">
+                        <strong>مثال:</strong> روبوتات Fanuc التي تستخدم التعلم المعزز لتحسين عمليات اللحام بسرعة ودقة أعلى.
+                    </div>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-car"></i> المركبات المستقلة</h4>
-                    <p>السيارات ذاتية القيادة، طائرات التوصيل بدون طيار، المعدات الزراعية، مركبات التعدين</p>
+                    <h4><i class="fas fa-car"></i> المركبات المستقلة (Autonomous Vehicles)</h4>
+                    <p>السيارات ذاتية القيادة مثل Tesla Autopilot، طائرات التوصيل بدون طيار، المعدات الزراعية الذاتية القيادة، مركبات التعدين المستقلة.</p>
+                    <div class="example-box">
+                        <strong>التحديات:</strong> معالجة البيانات في الوقت الحقيقي، اتخاذ قرارات أخلاقية في حالات الطوارئ.
+                    </div>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-heartbeat"></i> الروبوتات الطبية</h4>
-                    <p>المساعدون الجراحيون، رعاية المرضى، العلاج الطبيعي، توزيع الأدوية</p>
+                    <h4><i class="fas fa-heartbeat"></i> الروبوتات الطبية (Medical Robotics)</h4>
+                    <p>المساعدون الجراحيون مثل da Vinci، رعاية المرضى، العلاج الطبيعي الروبوتي، توزيع الأدوية في المستشفيات.</p>
+                    <div class="example-box">
+                        <strong>الدقة:</strong> روبوتات جراحية تقلل ارتعاش اليد البشري وتدخلات دقيقة إلى 1 ملم.
+                    </div>
                 </div>
             </div>
 
             <h3>التطبيقات المتقدمة في البحث</h3>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-water"></i> الاستكشاف البحري:</strong> غواصات روبوتية لدراسة الحياة البحرية وتغير المناخ
+                    <strong><i class="fas fa-water"></i> الاستكشاف البحري (Marine Exploration):</strong> غواصات روبوتية AUVs لدراسة الحياة البحرية وتغير المناخ، تعمل على أعماق تصل إلى 6000 متر.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-rocket"></i> استكشاف الفضاء:</strong> مركبات جوالة على المريخ وروبوتات الصيانة الفضائية
+                    <strong><i class="fas fa-rocket"></i> استكشاف الفضاء (Space Exploration):</strong> مركبات جوالة على المريخ مثل Perseverance، روبوتات الصيانة الفضائية مثل Robonaut 2 في محطة الفضاء الدولية.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-seedling"></i> الزراعة الذكية:</strong> روبوتات الحصاد والري المتقدمة
+                    <strong><i class="fas fa-seedling"></i> الزراعة الذكية (Smart Agriculture):</strong> روبوتات الحصاد مثل Harvest CROO، أنظمة الري المتقدمة باستخدام مستشعرات التربة والطقس.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-building"></i> البناء الآلي:</strong> روبوتات البناء والطباعة ثلاثية الأبعاد
+                    <strong><i class="fas fa-building"></i> البناء الآلي (Automated Construction):</strong> روبوتات البناء مثل Hadrian X، الطباعة ثلاثية الأبعاد للمباني باستخدام روبوتات كبيرة الحجم.
                 </div>
             </div>
 
             <h3>التحديات والحلول</h3>
             <div class="science-box">
                 <h4><i class="fas fa-balance-scale"></i> التحديات الأخلاقية والتقنية:</h4>
-                <p><strong>الأمان:</strong> ضمان عدم إلحاق الضرر بالبشر أو البيئة</p>
-                <p><strong>الخصوصية:</strong> حماية البيانات الشخصية في عصر الروبوتات الذكية</p>
-                <p><strong>العدالة:</strong> توفير الوصول العادل لتقنيات الروبوتات</p>
-                <p><strong>الشفافية:</strong> فهم كيفية اتخاذ الروبوتات لقراراتها</p>
+                <p><strong>الأمان (Safety):</strong> ضمان عدم إلحاق الضرر بالبشر أو البيئة باستخدام أنظمة حماية متعددة المستويات مثل المستشعرات المتعددة والتحكم في السرعة.</p>
+                <p><strong>الخصوصية (Privacy):</strong> حماية البيانات الشخصية في عصر الروبوتات الذكية باستخدام تشفير البيانات والتخزين المحلي.</p>
+                <p><strong>العدالة (Fairness):</strong> توفير الوصول العادل لتقنيات الروبوتات وتجنب التحيز في الخوارزميات من خلال مجموعات بيانات متنوعة واختبارات شاملة.</p>
+                <p><strong>الشفافية (Transparency):</strong> فهم كيفية اتخاذ الروبوتات لقراراتها باستخدام تقنيات مثل الذكاء الاصطناعي القابل للتفسير (Explainable AI - XAI).</p>
+            </div>
+            
+            <div class="real-world-example">
+                <div class="example-header">
+                    <i class="fas fa-robot"></i> دراسة حالة: روبوتات المستودعات الذكية
+                </div>
+                <div class="example-content">
+                    <p>شركة Amazon تستخدم أكثر من 200,000 روبوت في مستودعاتها تعمل بنظام الذكاء الاصطناعي. هذه الروبوتات تستخدم:</p>
+                    <ul>
+                        <li>خوارزميات تخطيط مسار متقدمة لتجنب الاصطدامات</li>
+                        <li>نظام رؤية حاسوبية للتعرف على المنتجات</li>
+                        <li>تحليل بيانات في الوقت الحقيقي لتحسين تدفق العمل</li>
+                        <li>تعلم معزز لتقليل وقت استلام الطلبات</li>
+                    </ul>
+                    <p><strong>النتائج:</strong> زيادة الإنتاجية بنسبة 40%، تقليل الأخطاء البشرية، وتخفيض تكاليف التشغيل.</p>
+                </div>
             </div>
         </section>
 
@@ -882,86 +1107,115 @@ while robot_is_active:
             <div class="highlight-box">
                 <h4><i class="fas fa-crystal-ball"></i> نظرة إلى المستقبل</h4>
                 <p>نتجه نحو عصر جديد من الروبوتات التي تتكامل بسلاسة مع حياتنا اليومية. من الروبوتات الاجتماعية التي تتفاعل طبيعياً مع البشر، إلى الأنظمة الذكية التي تتعلم من تفاعلاتها وتتحسن باستمرار. المستقبل يحمل إمكانيات لا محدودة للتعاون بين الإنسان والآلة.</p>
+                <p><strong>الروبوتات التعاونية (Cobots):</strong> روبوتات مصممة للعمل جنباً إلى جنب مع البشر بأمان في المصانع والمستشفيات والمنازل، باستخدام مستشعرات متطورة لتجنب الاصطدامات.</p>
             </div>
 
             <h3>الاتجاهات المستقبلية</h3>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-robot"></i> الروبوتات الاجتماعية:</strong> قدرة متزايدة على التفاعل الطبيعي مع البشر
+                    <strong><i class="fas fa-robot"></i> الروبوتات الاجتماعية (Social Robots):</strong> قدرة متزايدة على التفاعل الطبيعي مع البشر باستخدام معالجة اللغة الطبيعية (NLP) والتعرف على المشاعر (Emotion Recognition).
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-hands-helping"></i> التعاون البشري-الروبوتي:</strong> أنظمة تعمل جنباً إلى جنب مع البشر بشكل آمن
+                    <strong><i class="fas fa-hands-helping"></i> التعاون البشري-الروبوتي (Human-Robot Collaboration):</strong> أنظمة تعمل جنباً إلى جنب مع البشر بشكل آمن باستخدام تقنيات مثل المراقبة بالليزر والتحكم في القوة.
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-bolt"></i> التعلم المستمر:</strong> روبوتات تتكيف وتتحسن باستمرار دون تدخل بشري
+                    <strong><i class="fas fa-bolt"></i> التعلم المستمر (Continual Learning):</strong> روبوتات تتكيف وتتحسن باستمرار دون تدخل بشري باستخدام تقنيات مثل التعلم النشط (Active Learning) والتعلم الانتقالي (Transfer Learning).
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-microchip"></i> حواسيب عصبية:</strong> معالجات متخصصة تحاكي الدماغ البشري
+                    <strong><i class="fas fa-microchip"></i> حواسيب عصبية (Neuromorphic Computing):</strong> معالجات متخصصة تحاكي الدماغ البشري مثل Loihi من إنتل، تستهلك طاقة أقل وتقدم أداء أفضل للمهام الإدراكية.
                 </div>
             </div>
 
             <h3>الابتكارات المتوقعة</h3>
             <div class="grid">
                 <div class="card">
-                    <h4><i class="fas fa-user-md"></i> روبوتات رعاية صحية</h4>
-                    <p>تراقب المرضى وتقدم العلاج المناسب في الوقت الحقيقي</p>
+                    <h4><i class="fas fa-user-md"></i> روبوتات رعاية صحية (Healthcare Robots)</h4>
+                    <p>تراقب المرضى وتقدم العلاج المناسب في الوقت الحقيقي باستخدام مستشعرات حيوية وتشخيص بالذكاء الاصطناعي.</p>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-life-ring"></i> روبوتات إنقاذ</h4>
-                    <p>تبحث عن المفقودين في الكوارث الطبيعية والمواقف الخطرة</p>
+                    <h4><i class="fas fa-life-ring"></i> روبوتات إنقاذ (Rescue Robots)</h4>
+                    <p>تبحث عن المفقودين في الكوارث الطبيعية والمواقف الخطرة باستخدام كاميرات حرارية وأجهزة استشعار غاز.</p>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-graduation-cap"></i> روبوتات تعليمية</h4>
-                    <p>تشرح الدروس وتجيب على أسئلة الطلاب وتقدم تعليماً مخصصاً</p>
+                    <h4><i class="fas fa-graduation-cap"></i> روبوتات تعليمية (Educational Robots)</h4>
+                    <p>تشرح الدروس وتجيب على أسئلة الطلاب وتقدم تعليماً مخصصاً باستخدام معالجة اللغة الطبيعية وتحليل مستوى الطالب.</p>
                 </div>
                 <div class="card">
-                    <h4><i class="fas fa-tractor"></i> روبوتات زراعية</h4>
-                    <p>تراقب المحاصيل وتحدد احتياجاتها بدقة وتدير المزارع بكفاءة</p>
+                    <h4><i class="fas fa-tractor"></i> روبوتات زراعية (Agricultural Robots)</h4>
+                    <p>تراقب المحاصيل وتحدد احتياجاتها بدقة وتدير المزارع بكفاءة باستخدام تحليل صور جوية وبيانات مستشعرات التربة.</p>
                 </div>
+            </div>
+            
+            <h3>التحديات المستقبلية</h3>
+            <div class="algorithm-box">
+                <h4><i class="fas fa-exclamation-triangle"></i> العقبات التي يجب تجاوزها:</h4>
+                <p><strong>قدرات المعالجة:</strong> الحاجة إلى معالجات أقوى لتشغيل نماذج الذكاء الاصطناعي المعقدة في الوقت الحقيقي على الروبوتات.</p>
+                <p><strong>استهلاك الطاقة:</strong> تطوير بطاريات أكثر كفاءة وأنظمة طاقة متجددة للروبوتات الميدانية.</p>
+                <p><strong>الأطر القانونية:</strong> وضع تشريعات تنظم استخدام الروبوتات وتحدد المسؤولية في حالات الخطأ.</p>
+                <p><strong>القبول الاجتماعي:</strong> زيادة ثقة الجمهور في الروبوتات من خلال الشفافية والأداء الموثوق.</p>
             </div>
         </section>
 
-        <!-- For Whom Section -->
-        <section class="content-section">
-            <h2>🎯 لمن هذا المحتوى</h2>
+        <!-- Resources Section -->
+        <section id="resources" class="content-section">
+            <h2>📚 موارد تعليمية ومراجع</h2>
+            
             <div class="grid">
                 <div class="card">
-                    <h4><i class="fas fa-cogs"></i> مهندسو الروبوتات</h4>
-                    <p>المهنيون الذين يسعون لإضافة قدرات الذكاء الاصطناعي إلى أنظمتهم الروبوتية</p>
+                    <h4><i class="fas fa-book"></i> الكتب العلمية</h4>
+                    <ul>
+                        <li>Robotics: Modelling, Planning and Control - Bruno Siciliano</li>
+                        <li>Probabilistic Robotics - Sebastian Thrun</li>
+                        <li>Reinforcement Learning: An Introduction - Sutton & Barto</li>
+                        <li>Deep Learning for Robot Perception - Davide Scaramuzza</li>
+                    </ul>
                 </div>
+                
                 <div class="card">
-                    <h4><i class="fas fa-graduation-cap"></i> الطلاب والأكاديميون</h4>
-                    <p>المتعلمون الأكاديميون الذين يسعون للحصول على معرفة عملية في مجال الروبوتات الذكية</p>
+                    <h4><i class="fas fa-graduation-cap"></i> دورات تعليمية</h4>
+                    <ul>
+                        <li>Robotics Specialization - University of Pennsylvania (Coursera)</li>
+                        <li>Introduction to Robotics - MIT OpenCourseWare</li>
+                        <li>Artificial Intelligence for Robotics - Udacity</li>
+                        <li>ROS for Beginners - Udemy</li>
+                    </ul>
                 </div>
+                
                 <div class="card">
-                    <h4><i class="fas fa-tools"></i> الصانعون والهواة</h4>
-                    <p>المتحمسون للأعمال اليدوية المستعدون للتقدم من الروبوتات الأساسية إلى الأنظمة الذكية</p>
-                </div>
-                <div class="card">
-                    <h4><i class="fas fa-briefcase"></i> المهنيون في الصناعة</h4>
-                    <p>المهندسون الذين ينتقلون من مجالات أخرى إلى صناعة الروبوتات</p>
+                    <h4><i class="fas fa-code"></i> أدوات مفتوحة المصدر</h4>
+                    <ul>
+                        <li>ROS (Robot Operating System)</li>
+                        <li>Gazebo (محاكي الروبوتات)</li>
+                        <li>OpenCV (معالجة الصور)</li>
+                        <li>TensorFlow/PyTorch (تعلم الآلة)</li>
+                        <li>MoveIt (تخطيط الحركة)</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="highlight-box">
-                <h4><i class="fas fa-rocket"></i> مستعد لبدء رحلتك في عالم الروبوتات الذكية؟</h4>
-                <p>سواء كنت تبني أول روبوت ذكي لك أو تعزز الأنظمة الموجودة بقدرات الذكاء الاصطناعي، هذا المحتوى يوفر المعرفة العملية والتقنيات المثبتة التي تحتاجها للنجاح في عالم الروبوتات الذكية سريع التطور.</p>
-            </div>
-
-            <h3>الموارد التعليمية الإضافية</h3>
+            <h3>مجتمعات علمية ومؤتمرات</h3>
             <div class="concept-list">
                 <div class="concept-item">
-                    <strong><i class="fas fa-book"></i> مراجع علمية:</strong> أحدث الأوراق البحثية والدراسات في مجال الروبوتات
+                    <strong><i class="fas fa-users"></i> IEEE Robotics and Automation Society</strong> - مجتمع عالمي يضم باحثين ومهندسين في مجال الروبوتات
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-code"></i> أدوات البرمجة:</strong> أطر العمل والمكتبات المفتوحة المصدر
+                    <strong><i class="fas fa-calendar-alt"></i> ICRA (International Conference on Robotics and Automation)</strong> - أكبر مؤتمر أكاديمي في مجال الروبوتات
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-users"></i> مجتمعات علمية:</strong> منتديات ومجموعات للباحثين والمطورين
+                    <strong><i class="fab fa-github"></i> GitHub Robotics</strong> - منصة لمشاريع الروبوتات مفتوحة المصدر
                 </div>
                 <div class="concept-item">
-                    <strong><i class="fas fa-trophy"></i> مسابقات وتحديات:</strong> فرص لاختبار وتطوير مهاراتك
+                    <strong><i class="fab fa-reddit"></i> r/robotics</strong> - مجتمع نشط على ريديت لمناقشة أحدث التطورات
                 </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4><i class="fas fa-lightbulb"></i> نصائح للبدء في مجال الروبوتات الذكية</h4>
+                <p>1. ابدأ بمشاريع صغيرة مثل روبوت متتبع للخط باستخدام Arduino</p>
+                <p>2. تعلم لغة Python فهي الأكثر استخداماً في الذكاء الاصطناعي والروبوتات</p>
+                <p>3. استخدم منصة ROS كنظام تشغيل للروبوتات</p>
+                <p>4. تدرب على محاكي Gazebo قبل الانتقال للروبوتات الحقيقية</p>
+                <p>5. انضم لمجتمعات الروبوتات وشارك في المسابقات مثل RoboCup</p>
             </div>
         </section>
 
@@ -973,24 +1227,50 @@ while robot_is_active:
                 <div class="card">
                     <h4><i class="fas fa-chart-line"></i> نمو الصناعة</h4>
                     <p>سوق الروبوتات العالمي ينمو بمعدل 20% سنوياً، مع توقعات بوصوله إلى 500 مليار دولار بحلول 2030</p>
+                    <div class="term-explanation">
+                        <strong>الروبوتات الخدمية (Service Robots):</strong> أسرع قطاع نمواً بنسبة 35% سنوياً، خاصة في الرعاية الصحية والخدمات اللوجستية.
+                    </div>
                 </div>
                 <div class="card">
                     <h4><i class="fas fa-globe"></i> التأثير العالمي</h4>
                     <p>أكثر من 3 مليون روبوت صناعي يعمل حالياً حول العالم، وهذا الرقم يتضاعف كل 5 سنوات</p>
+                    <div class="term-explanation">
+                        <strong>الصين:</strong> أكبر سوق للروبوتات الصناعية حيث تمثل 45% من المبيعات العالمية.
+                    </div>
                 </div>
                 <div class="card">
                     <h4><i class="fas fa-briefcase"></i> فرص العمل</h4>
                     <p>الطلب على مهندسي الروبوتات يزيد بنسبة 15% سنوياً، مما يجعله من أسرع المهن نمواً</p>
+                    <div class="term-explanation">
+                        <strong>المهارات المطلوبة:</strong> برمجة Python/C++، ROS، التعلم الآلي، الرؤية الحاسوبية، التحكم في الأنظمة.
+                    </div>
                 </div>
                 <div class="card">
                     <h4><i class="fas fa-flask"></i> البحث والتطوير</h4>
                     <p>أكثر من 50 مليار دولار يُستثمر سنوياً في بحوث الروبوتات والذكاء الاصطناعي</p>
+                    <div class="term-explanation">
+                        <strong>الاستثمارات:</strong> 60% من الاستثمارات تأتي من شركات التكنولوجيا الكبرى مثل Google وAmazon وToyota.
+                    </div>
                 </div>
             </div>
 
             <div class="science-box">
                 <h4><i class="fas fa-graduation-cap"></i> أهمية التعلم المستمر</h4>
                 <p>في مجال سريع التطور مثل الروبوتات الذكية، التعلم المستمر ليس مجرد ميزة - إنه ضرورة. التقنيات الجديدة تظهر شهرياً، والمهارات تتطور باستمرار. الاستثمار في تطوير معرفتك ومهاراتك هو الطريق الوحيد للبقاء في المقدمة.</p>
+                <p><strong>التحديث المعرفي:</strong> احرص على متابعة أحدث الأوراق البحثية من arXiv والمؤتمرات المتخصصة، وتجربة الأدوات الجديدة باستمرار.</p>
+            </div>
+            
+            <div class="conclusion">
+                <div class="conclusion-grid">
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-brain"></i> الخلاصة</h3>
+                        <p>الروبوتات الذكية تتحول من خيال علمي إلى حقيقة تغير حياتنا اليومية. فهم أساسيات الذكاء الاصطناعي وتطبيقاته في الروبوتات هو مهارة أساسية لمستقبل مهني ناجح في هذا المجال المثير.</p>
+                    </div>
+                    <div class="conclusion-card">
+                        <h3><i class="fas fa-road"></i> الخطوات التالية</h3>
+                        <p>ابدأ بمشروع صغير، تعلم الأدوات الأساسية، انضم لمجتمعات المتخصصين، واستمر في التعلم والتجربة. المستقبل ينتمي لمن يمتلكون المهارات التقنية والإبداع لحل المشكلات المعقدة.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -1000,34 +1280,32 @@ while robot_is_active:
         <i class="fas fa-arrow-up"></i>
     </button>
     
-  <!-- Footer Section -->
-<footer class="bg-[#18317c] py-6 mt-12 text-white">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <img src="logo.png" 
-                     alt="AIBOMECH Logo" 
-                     class="h-12 mr-3">
-                <span class="text-white">© 2025 AIBOMECH</span>
-            </div>
-            
-            <!-- Social Links - Centered with Logo -->
-            <div class="flex space-x-6">
-                <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
-                   target="_blank" 
-                   class="text-white hover:text-red-300 transition-colors text-2xl">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/aibomech/" 
-                   target="_blank" 
-                   class="text-white hover:text-blue-300 transition-colors text-2xl">
-                    <i class="fab fa-linkedin"></i>
-                </a>
+    <!-- Footer Section -->
+    <footer class="bg-[#18317c] py-6 mt-12 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="text-white">© 2025 AIBOMECH</span>
+                </div>
+                
+                <!-- Social Links - Centered with Logo -->
+                <div class="flex space-x-6">
+                    <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
+                       target="_blank" 
+                       class="text-white hover:text-red-300 transition-colors text-2xl">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/aibomech/" 
+                       target="_blank" 
+                       class="text-white hover:text-blue-300 transition-colors text-2xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+    
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -1076,7 +1354,7 @@ while robot_is_active:
         document.head.appendChild(style);
         
         // Observe elements
-        document.querySelectorAll('.module-card, .concept-card, .real-world-example, .flow-step, .card, .concept-item').forEach(el => {
+        document.querySelectorAll('.module-card, .concept-card, .real-world-example, .flow-step, .card, .concept-item, .architecture-item').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
         });
@@ -1108,6 +1386,77 @@ while robot_is_active:
                 behavior: 'smooth'
             });
         });
+        
+        // Create neural network connections dynamically
+        function createNeuralConnections() {
+            const neuralNetwork = document.querySelector('.neural-network');
+            const inputLayer = document.querySelector('.input-layer');
+            const hiddenLayer = document.querySelector('.hidden-layer');
+            const outputLayer = document.querySelector('.output-layer');
+            
+            const inputNeurons = inputLayer.querySelectorAll('.neuron');
+            const hiddenNeurons = hiddenLayer.querySelectorAll('.neuron');
+            const outputNeurons = outputLayer.querySelectorAll('.neuron');
+            
+            // Input to Hidden connections
+            inputNeurons.forEach(inputNeuron => {
+                hiddenNeurons.forEach(hiddenNeuron => {
+                    const connection = document.createElement('div');
+                    connection.classList.add('connection');
+                    
+                    const inputRect = inputNeuron.getBoundingClientRect();
+                    const hiddenRect = hiddenNeuron.getBoundingClientRect();
+                    const containerRect = neuralNetwork.getBoundingClientRect();
+                    
+                    const x1 = inputRect.left + inputRect.width - containerRect.left;
+                    const y1 = inputRect.top + inputRect.height/2 - containerRect.top;
+                    const x2 = hiddenRect.left - containerRect.left;
+                    const y2 = hiddenRect.top + hiddenRect.height/2 - containerRect.top;
+                    
+                    const length = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    connection.style.width = length + 'px';
+                    connection.style.left = x1 + 'px';
+                    connection.style.top = y1 + 'px';
+                    connection.style.transform = `rotate(${angle}deg)`;
+                    connection.style.transformOrigin = 'top left';
+                    
+                    neuralNetwork.appendChild(connection);
+                });
+            });
+            
+            // Hidden to Output connections
+            hiddenNeurons.forEach(hiddenNeuron => {
+                outputNeurons.forEach(outputNeuron => {
+                    const connection = document.createElement('div');
+                    connection.classList.add('connection');
+                    
+                    const hiddenRect = hiddenNeuron.getBoundingClientRect();
+                    const outputRect = outputNeuron.getBoundingClientRect();
+                    const containerRect = neuralNetwork.getBoundingClientRect();
+                    
+                    const x1 = hiddenRect.left + hiddenRect.width - containerRect.left;
+                    const y1 = hiddenRect.top + hiddenRect.height/2 - containerRect.top;
+                    const x2 = outputRect.left - containerRect.left;
+                    const y2 = outputRect.top + outputRect.height/2 - containerRect.top;
+                    
+                    const length = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    connection.style.width = length + 'px';
+                    connection.style.left = x1 + 'px';
+                    connection.style.top = y1 + 'px';
+                    connection.style.transform = `rotate(${angle}deg)`;
+                    connection.style.transformOrigin = 'top left';
+                    
+                    neuralNetwork.appendChild(connection);
+                });
+            });
+        }
+        
+        // Create neural connections after page load
+        window.addEventListener('load', createNeuralConnections);
     </script>
 </body>
 </html>
