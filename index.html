@@ -3,10 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
     <title>الذكاء الاصطناعي في الروبوتات - دليل شامل من الأساسيات إلى التطبيقات المتقدمة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="دليل شامل عن الذكاء الاصطناعي في الروبوتات، يغطي الأساسيات، التطبيقات العملية، والتقنيات المتقدمة. تعلم الشبكات العصبية، التعلم المعزز، والرؤية الحاسوبية للروبوتات الذكية.">
+    <meta name="keywords" content="الذكاء الاصطناعي, روبوتات, تعلم آلي, شبكات عصبية, رؤية حاسوبية, تعلم معزز, ROS, Python, TensorFlow, OpenCV">
+    <meta name="author" content="AIBOMECH">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://basheeraltawil.github.io/AI-IN-ROBOTICS/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://basheeraltawil.github.io/AI-IN-ROBOTICS/">
+    <meta property="og:title" content="الذكاء الاصطناعي في الروبوتات - دليل شامل">
+    <meta property="og:description" content="دليل شامل عن الذكاء الاصطناعي في الروبوتات، من الأساسيات إلى التطبيقات المتقدمة">
+    <meta property="og:image" content="https://basheeraltawil.github.io/AI-IN-ROBOTICS/logo.png">
+    <meta property="og:locale" content="ar_SA">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://basheeraltawil.github.io/AI-IN-ROBOTICS/">
+    <meta property="twitter:title" content="الذكاء الاصطناعي في الروبوتات - دليل شامل">
+    <meta property="twitter:description" content="دليل شامل عن الذكاء الاصطناعي في الروبوتات، من الأساسيات إلى التطبيقات المتقدمة">
+    <meta property="twitter:image" content="https://basheeraltawil.github.io/AI-IN-ROBOTICS/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🤖</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🤖</text></svg>">
+    
+    <!-- External Resources with Fallbacks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          onerror="this.onerror=null; this.remove(); document.head.appendChild(document.createElement('style')).textContent='[class*=fa-]:before{content:\"▶\";}';">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"
+          onerror="this.onerror=null; this.remove(); document.body.style.fontFamily='Arial, sans-serif';">
+    <script src="https://cdn.tailwindcss.com" 
+            onerror="this.onerror=null; this.remove(); console.warn('Tailwind CSS failed to load');"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "الذكاء الاصطناعي في الروبوتات",
+      "description": "دليل شامل عن الذكاء الاصطناعي في الروبوتات",
+      "url": "https://basheeraltawil.github.io/AI-IN-ROBOTICS/",
+      "inLanguage": "ar",
+      "author": {
+        "@type": "Organization",
+        "name": "AIBOMECH",
+        "url": "https://www.linkedin.com/company/aibomech/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AIBOMECH",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://basheeraltawil.github.io/AI-IN-ROBOTICS/logo.png"
+        }
+      }
+    }
+    </script>
     <style>
         :root {
             --primary: #1a365d;
@@ -18,6 +74,193 @@
             --warning: #dd6b20;
         }
         
+        /* Tailwind CSS Fallbacks */
+        .flex { display: flex !important; }
+        .flex-col { flex-direction: column !important; }
+        .items-center { align-items: center !important; }
+        .justify-center { justify-content: center !important; }
+        .gap-6 { gap: 1.5rem !important; }
+        .space-x-6 > * + * { margin-left: 1.5rem !important; }
+        .text-white { color: white !important; }
+        .text-2xl { font-size: 1.5rem !important; }
+        .transition-colors { transition: color 0.15s ease-in-out !important; }
+        .hover\:text-red-300:hover { color: #fca5a5 !important; }
+        .hover\:text-blue-300:hover { color: #93c5fd !important; }
+        @media (min-width: 768px) {
+            .md\:flex-row { flex-direction: row !important; }
+            .md\:gap-12 { gap: 3rem !important; }
+        }
+        
+        /* Skip Navigation Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* Loading Indicator */
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Improved accessibility for screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Dark Mode Styles */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #4299e1;
+                --secondary: #63b3ed;
+                --dark: #1a202c;
+                --light: #2d3748;
+            }
+            
+            body.auto-theme {
+                background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+                color: #e2e8f0;
+            }
+            
+            .auto-theme .content-section {
+                background: #2d3748;
+                color: #e2e8f0;
+            }
+            
+            .auto-theme .card {
+                background: #4a5568;
+                color: #e2e8f0;
+            }
+            
+            .auto-theme nav {
+                background: #2d3748;
+            }
+            
+            .auto-theme nav a {
+                color: #e2e8f0;
+            }
+        }
+        
+        /* Explicit Dark Theme */
+        body.dark-theme {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+            color: #e2e8f0 !important;
+        }
+        
+        .dark-theme .content-section {
+            background: #2d3748 !important;
+            color: #e2e8f0 !important;
+        }
+        
+        .dark-theme .card {
+            background: #4a5568 !important;
+            color: #e2e8f0 !important;
+        }
+        
+        .dark-theme nav {
+            background: #2d3748 !important;
+        }
+        
+        .dark-theme nav a {
+            color: #e2e8f0 !important;
+        }
+        
+        .dark-theme header {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+        }
+        
+        /* Explicit Light Theme */
+        body.light-theme {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%) !important;
+            color: #2d3748 !important;
+        }
+        
+        .light-theme .content-section {
+            background: white !important;
+            color: #2d3748 !important;
+        }
+        
+        .light-theme .card {
+            background: #f8fafc !important;
+            color: #2d3748 !important;
+        }
+        
+        .light-theme nav {
+            background: white !important;
+        }
+        
+        .light-theme nav a {
+            color: #1a365d !important;
+        }
+        
+        /* Dark theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -25,13 +268,17 @@
         }
         
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Tajawal', 'Cairo', 'Noto Sans Arabic', Arial, sans-serif;
             line-height: 1.8;
             color: #2d3748;
             background: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%);
             min-height: 100vh;
             direction: rtl;
             text-align: right;
+            /* Improved performance and accessibility */
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         header {
@@ -680,7 +927,15 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Skip Navigation for Accessibility -->
+    <a class="skip-link" href="#main-content">تخطى إلى المحتوى الرئيسي</a>
+    
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="تبديل المظهر بين الفاتح والداكن" title="تبديل المظهر">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+    </button>
+    
+    <header role="banner">
         <div class="header-content">
             <h1>الذكاء الاصطناعي في الروبوتات</h1>
             <p class="subtitle">دليل شامل من الأساسيات إلى التطبيقات المتقدمة</p>
@@ -700,22 +955,22 @@
         </div>
     </header>
     
-    <nav>
+    <nav role="navigation" aria-label="التنقل الرئيسي">
         <div class="nav-container">
-            <a href="#overview"><i class="fas fa-home"></i> نظرة عامة</a>
-            <a href="#fundamentals"><i class="fas fa-cube"></i> الأساسيات</a>
-            <a href="#research"><i class="fas fa-flask"></i> البحث العلمي</a>
-            <a href="#concepts"><i class="fas fa-brain"></i> المفاهيم الأساسية</a>
-            <a href="#applications"><i class="fas fa-lightbulb"></i> التطبيقات</a>
-            <a href="#future"><i class="fas fa-rocket"></i> المستقبل</a>
-            <a href="#resources"><i class="fas fa-book"></i> الموارد</a>
+            <a href="#overview" aria-label="انتقل إلى نظرة عامة"><i class="fas fa-home" aria-hidden="true"></i> نظرة عامة</a>
+            <a href="#fundamentals" aria-label="انتقل إلى الأساسيات"><i class="fas fa-cube" aria-hidden="true"></i> الأساسيات</a>
+            <a href="#research" aria-label="انتقل إلى البحث العلمي"><i class="fas fa-flask" aria-hidden="true"></i> البحث العلمي</a>
+            <a href="#concepts" aria-label="انتقل إلى المفاهيم الأساسية"><i class="fas fa-brain" aria-hidden="true"></i> المفاهيم الأساسية</a>
+            <a href="#applications" aria-label="انتقل إلى التطبيقات"><i class="fas fa-lightbulb" aria-hidden="true"></i> التطبيقات</a>
+            <a href="#future" aria-label="انتقل إلى المستقبل"><i class="fas fa-rocket" aria-hidden="true"></i> المستقبل</a>
+            <a href="#resources" aria-label="انتقل إلى الموارد"><i class="fas fa-book" aria-hidden="true"></i> الموارد</a>
         </div>
     </nav>
     
-    <div class="container">
+    <main id="main-content" class="container" role="main" aria-label="المحتوى الرئيسي">
         <!-- Enhanced Overview Section -->
-        <section id="overview" class="content-section intro">
-            <h2>📖 نظرة عامة</h2>
+        <section id="overview" class="content-section intro" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">📖 نظرة عامة</h2>
             <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem; color: #666;">
                 اكتشف عالم الروبوتات الذكية وتعلم كيفية دمج تقنيات الذكاء الاصطناعي في الأنظمة الروبوتية.
                 هذا الدليل الشامل يجمع بين النظرية العلمية والتطبيقات العملية.
@@ -1273,15 +1528,21 @@ Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
                 </div>
             </div>
         </section>
-    </div>
+    </main>
     
-    <!-- Scroll to top button -->
-    <button id="scrollToTopBtn" title="العودة إلى الأعلى">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Enhanced Scroll to top button -->
+    <button id="scrollToTopBtn" title="العودة إلى الأعلى" aria-label="العودة إلى أعلى الصفحة" role="button">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
     
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading-indicator" aria-hidden="true">
+        <div class="loading-spinner"></div>
+        <p>جاري التحميل...</p>
+    </div>
+    
     <!-- Footer Section -->
-    <footer class="bg-[#18317c] py-6 mt-12 text-white">
+    <footer class="bg-[#18317c] py-6 mt-12 text-white" role="contentinfo" aria-label="معلومات الموقع">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                 <!-- Logo -->
@@ -1290,23 +1551,78 @@ Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
                 </div>
                 
                 <!-- Social Links - Centered with Logo -->
-                <div class="flex space-x-6">
-                    <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
-                       target="_blank" 
-                       class="text-white hover:text-red-300 transition-colors text-2xl">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/aibomech/" 
-                       target="_blank" 
-                       class="text-white hover:text-blue-300 transition-colors text-2xl">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
+                <nav aria-label="روابط وسائل التواصل الاجتماعي">
+                    <div class="flex space-x-6">
+                        <a href="https://www.youtube.com/channel/UCMk8Wiy96j4m9BFl7SuwM2g" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           aria-label="زيارة قناة AIBOMECH على يوتيوب (يفتح في نافذة جديدة)"
+                           class="text-white hover:text-red-300 transition-colors text-2xl">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                            <span class="sr-only">يوتيوب</span>
+                        </a>
+                        <a href="https://www.linkedin.com/company/aibomech/" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           aria-label="زيارة صفحة AIBOMECH على لينكد إن (يفتح في نافذة جديدة)"
+                           class="text-white hover:text-blue-300 transition-colors text-2xl">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <span class="sr-only">لينكد إن</span>
+                        </a>
+                    </div>
+                </nav>
             </div>
         </div>
     </footer>
     
     <script>
+        // Enhanced page loading and performance optimizations
+        (function() {
+            'use strict';
+            
+            // Hide loading indicator when page is loaded
+            window.addEventListener('load', function() {
+                const loadingIndicator = document.getElementById('loading-indicator');
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = 'none';
+                }
+            });
+            
+            // Show loading indicator for slow connections
+            let loadingTimer = setTimeout(function() {
+                const loadingIndicator = document.getElementById('loading-indicator');
+                if (loadingIndicator && document.readyState !== 'complete') {
+                    loadingIndicator.style.display = 'flex';
+                }
+            }, 1000);
+            
+            // Clear timer if page loads quickly
+            window.addEventListener('load', function() {
+                clearTimeout(loadingTimer);
+            });
+            
+            // Enhanced error handling for failed resources
+            window.addEventListener('error', function(e) {
+                if (e.target !== window) {
+                    console.warn('Resource failed to load:', e.target.src || e.target.href);
+                    // Could add user notification here
+                }
+            }, true);
+            
+            // Keyboard navigation enhancement
+            document.addEventListener('keydown', function(e) {
+                // Skip to main content with Alt+M
+                if (e.altKey && e.key === 'm') {
+                    e.preventDefault();
+                    const mainContent = document.getElementById('main-content');
+                    if (mainContent) {
+                        mainContent.focus();
+                        mainContent.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        })();
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1386,6 +1702,61 @@ Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
                 behavior: 'smooth'
             });
         });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to auto
+        const savedTheme = localStorage.getItem('theme') || 'auto';
+        applyTheme(savedTheme);
+        
+        function applyTheme(theme) {
+            body.className = ''; // Clear existing theme classes
+            
+            if (theme === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-label', 'تبديل إلى المظهر الفاتح');
+            } else if (theme === 'light') {
+                body.classList.add('light-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-label', 'تبديل إلى المظهر الداكن');
+            } else {
+                body.classList.add('auto-theme');
+                themeToggle.innerHTML = '<i class="fas fa-adjust" aria-hidden="true"></i>';
+                themeToggle.setAttribute('aria-label', 'تبديل إلى المظهر اليدوي');
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            let currentTheme = localStorage.getItem('theme') || 'auto';
+            let newTheme;
+            
+            // Cycle through themes: auto -> light -> dark -> auto
+            if (currentTheme === 'auto') {
+                newTheme = 'light';
+            } else if (currentTheme === 'light') {
+                newTheme = 'dark';
+            } else {
+                newTheme = 'auto';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+        
+        // Enhanced performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    if (perfData.loadEventEnd - perfData.loadEventStart > 3000) {
+                        console.warn('Page load time is high. Consider optimizing resources.');
+                    }
+                }, 0);
+            });
+        }
         
         // Create neural network connections dynamically
         function createNeuralConnections() {
