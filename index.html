@@ -920,6 +920,171 @@
             text-align: center;
         }
         
+        /* Code Examples Section Styles */
+        .code-examples-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .code-showcase {
+            display: grid;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .code-example {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .code-container {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .code-container pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #f8f8f2;
+        }
+        
+        .code-container code {
+            color: #f8f8f2;
+        }
+        
+        .code-description {
+            margin-top: 1rem;
+        }
+        
+        .code-description p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .btn-code {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-code:hover {
+            background: #2d8659;
+            transform: translateY(-2px);
+        }
+        
+        .interactive-demo {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pid-simulator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pid-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--success);
+            cursor: pointer;
+        }
+        
+        #reset-simulation {
+            background: var(--warning);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        #reset-simulation:hover {
+            background: #c05621;
+            transform: scale(1.05);
+        }
+        
+        .pid-visualization {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        #pid-canvas {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pid-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+        
+        .pid-info div {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .pid-info span {
+            font-weight: bold;
+            color: var(--success);
+        }
+        }
+        
         .architecture-item h4 {
             margin-bottom: 0.5rem;
             color: var(--primary);
@@ -961,6 +1126,7 @@
             <a href="#fundamentals" aria-label="انتقل إلى الأساسيات"><i class="fas fa-cube" aria-hidden="true"></i> الأساسيات</a>
             <a href="#research" aria-label="انتقل إلى البحث العلمي"><i class="fas fa-flask" aria-hidden="true"></i> البحث العلمي</a>
             <a href="#concepts" aria-label="انتقل إلى المفاهيم الأساسية"><i class="fas fa-brain" aria-hidden="true"></i> المفاهيم الأساسية</a>
+            <a href="#code-examples" aria-label="انتقل إلى الأمثلة العملية"><i class="fas fa-code" aria-hidden="true"></i> أمثلة عملية</a>
             <a href="#applications" aria-label="انتقل إلى التطبيقات"><i class="fas fa-lightbulb" aria-hidden="true"></i> التطبيقات</a>
             <a href="#future" aria-label="انتقل إلى المستقبل"><i class="fas fa-rocket" aria-hidden="true"></i> المستقبل</a>
             <a href="#resources" aria-label="انتقل إلى الموارد"><i class="fas fa-book" aria-hidden="true"></i> الموارد</a>
@@ -1273,6 +1439,183 @@ Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
                     <div class="step-circle"><i class="fas fa-sync-alt"></i></div>
                     <h4>التغذية الراجعة</h4>
                     <p>تعزيز التعلم، تحسين الأداء</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples Section -->
+        <section id="code-examples" class="content-section code-examples-section">
+            <h2>💻 أمثلة عملية بالكود</h2>
+            
+            <div class="code-showcase">
+                <div class="code-example">
+                    <h3><i class="fas fa-robot"></i> روبوت متتبع للخط بـ OpenCV</h3>
+                    <div class="code-container">
+                        <pre><code class="python">import cv2
+import numpy as np
+
+class LineFollowingRobot:
+    def __init__(self):
+        self.cap = cv2.VideoCapture(0)
+        self.kp = 0.5  # PID Controller
+        
+    def preprocess_image(self, frame):
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        _, binary = cv2.threshold(gray, 60, 255, cv2.THRESH_BINARY_INV)
+        return binary
+        
+    def find_line_center(self, binary):
+        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if contours:
+            largest = max(contours, key=cv2.contourArea)
+            M = cv2.moments(largest)
+            if M["m00"] != 0:
+                cx = int(M["m10"] / M["m00"])
+                return cx
+        return None
+        
+    def control_motors(self, error):
+        steering = self.kp * error
+        left_speed = 100 - steering
+        right_speed = 100 + steering
+        return left_speed, right_speed
+
+# تشغيل الروبوت
+robot = LineFollowingRobot()
+robot.run()</code></pre>
+                    </div>
+                    <div class="code-description">
+                        <p><strong>الهدف:</strong> روبوت يتبع خط أسود باستخدام الرؤية الحاسوبية والتحكم PID</p>
+                        <p><strong>التقنيات:</strong> OpenCV، معالجة الصور، التحكم التناسبي</p>
+                        <a href="docs/examples/line-following-robot.md" class="btn-code">عرض الكود الكامل</a>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h3><i class="fas fa-brain"></i> شبكة عصبية للتعرف على الكائنات</h3>
+                    <div class="code-container">
+                        <pre><code class="python">import tensorflow as tf
+from tensorflow.keras import layers, models
+import numpy as np
+
+# بناء نموذج CNN للتعرف على الكائنات
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')  # 10 فئات
+])
+
+# تكوين النموذج
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# تدريب النموذج
+model.fit(train_images, train_labels, epochs=10,
+          validation_data=(test_images, test_labels))
+
+# استخدام النموذج للتنبؤ
+def predict_object(image):
+    prediction = model.predict(np.expand_dims(image, axis=0))
+    return np.argmax(prediction)</code></pre>
+                    </div>
+                    <div class="code-description">
+                        <p><strong>الهدف:</strong> تدريب شبكة عصبية للتعرف على 10 أنواع من الكائنات</p>
+                        <p><strong>التقنيات:</strong> TensorFlow، CNN، التعلم العميق</p>
+                        <a href="docs/tutorials/neural-network-object-classification.md" class="btn-code">البرنامج التعليمي الكامل</a>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h3><i class="fas fa-gamepad"></i> التعلم المعزز للتحكم الروبوتي</h3>
+                    <div class="code-container">
+                        <pre><code class="python">import numpy as np
+import random
+from collections import deque
+
+class DQNAgent:
+    def __init__(self, state_size, action_size):
+        self.state_size = state_size
+        self.action_size = action_size
+        self.memory = deque(maxlen=2000)
+        self.epsilon = 1.0  # exploration rate
+        self.epsilon_min = 0.01
+        self.epsilon_decay = 0.995
+        self.learning_rate = 0.001
+        
+    def remember(self, state, action, reward, next_state, done):
+        self.memory.append((state, action, reward, next_state, done))
+    
+    def act(self, state):
+        if np.random.rand() <= self.epsilon:
+            return random.randrange(self.action_size)
+        q_values = self.model.predict(state)
+        return np.argmax(q_values[0])
+    
+    def replay(self, batch_size):
+        minibatch = random.sample(self.memory, batch_size)
+        for state, action, reward, next_state, done in minibatch:
+            target = reward
+            if not done:
+                target += 0.95 * np.amax(self.model.predict(next_state)[0])
+            target_f = self.model.predict(state)
+            target_f[0][action] = target
+            self.model.fit(state, target_f, epochs=1, verbose=0)
+
+# تدريب الروبوت على التنقل
+agent = DQNAgent(state_size=8, action_size=4)
+for episode in range(1000):
+    state = env.reset()
+    total_reward = 0
+    while True:
+        action = agent.act(state)
+        next_state, reward, done = env.step(action)
+        agent.remember(state, action, reward, next_state, done)
+        state = next_state
+        total_reward += reward
+        if done:
+            break
+    agent.replay(32)</code></pre>
+                    </div>
+                    <div class="code-description">
+                        <p><strong>الهدف:</strong> تعليم روبوت التنقل في بيئة معقدة باستخدام التعلم المعزز</p>
+                        <p><strong>التقنيات:</strong> Deep Q-Learning، Exploration vs Exploitation</p>
+                        <a href="docs/tutorials/reinforcement-learning-control.md" class="btn-code">الدليل التفصيلي</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interactive-demo">
+                <h3>🎮 تجربة تفاعلية: محاكي PID Controller</h3>
+                <div class="pid-simulator">
+                    <div class="pid-controls">
+                        <div class="control-group">
+                            <label>Kp (تناسبي): <span id="kp-value">0.5</span></label>
+                            <input type="range" id="kp-slider" min="0" max="2" step="0.1" value="0.5">
+                        </div>
+                        <div class="control-group">
+                            <label>Ki (تكاملي): <span id="ki-value">0.1</span></label>
+                            <input type="range" id="ki-slider" min="0" max="1" step="0.05" value="0.1">
+                        </div>
+                        <div class="control-group">
+                            <label>Kd (تفاضلي): <span id="kd-value">0.2</span></label>
+                            <input type="range" id="kd-slider" min="0" max="1" step="0.05" value="0.2">
+                        </div>
+                        <button id="reset-simulation">إعادة تعيين</button>
+                    </div>
+                    <div class="pid-visualization">
+                        <canvas id="pid-canvas" width="400" height="200"></canvas>
+                        <div class="pid-info">
+                            <div>الهدف: <span id="target-value">100</span></div>
+                            <div>القيمة الحالية: <span id="current-value">0</span></div>
+                            <div>الخطأ: <span id="error-value">100</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1825,6 +2168,199 @@ Q(s,a) = Q(s,a) + α [r + γ max Q(s',a') - Q(s,a)]
                 });
             });
         }
+        
+        // PID Controller Interactive Demo
+        class PIDSimulator {
+            constructor() {
+                this.canvas = document.getElementById('pid-canvas');
+                this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+                this.target = 100;
+                this.current = 0;
+                this.error = 0;
+                this.previousError = 0;
+                this.integral = 0;
+                this.kp = 0.5;
+                this.ki = 0.1;
+                this.kd = 0.2;
+                this.time = 0;
+                this.history = [];
+                this.maxHistory = 200;
+                this.isRunning = false;
+                
+                this.initializeControls();
+                this.startSimulation();
+            }
+            
+            initializeControls() {
+                // PID parameter controls
+                const kpSlider = document.getElementById('kp-slider');
+                const kiSlider = document.getElementById('ki-slider');
+                const kdSlider = document.getElementById('kd-slider');
+                const resetBtn = document.getElementById('reset-simulation');
+                
+                if (kpSlider) {
+                    kpSlider.addEventListener('input', (e) => {
+                        this.kp = parseFloat(e.target.value);
+                        document.getElementById('kp-value').textContent = this.kp.toFixed(1);
+                    });
+                }
+                
+                if (kiSlider) {
+                    kiSlider.addEventListener('input', (e) => {
+                        this.ki = parseFloat(e.target.value);
+                        document.getElementById('ki-value').textContent = this.ki.toFixed(2);
+                    });
+                }
+                
+                if (kdSlider) {
+                    kdSlider.addEventListener('input', (e) => {
+                        this.kd = parseFloat(e.target.value);
+                        document.getElementById('kd-value').textContent = this.kd.toFixed(2);
+                    });
+                }
+                
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        this.reset();
+                    });
+                }
+            }
+            
+            reset() {
+                this.current = 0;
+                this.error = 0;
+                this.previousError = 0;
+                this.integral = 0;
+                this.time = 0;
+                this.history = [];
+                this.updateDisplay();
+            }
+            
+            calculatePID() {
+                this.error = this.target - this.current;
+                this.integral += this.error;
+                const derivative = this.error - this.previousError;
+                
+                const output = this.kp * this.error + this.ki * this.integral + this.kd * derivative;
+                
+                // Simple system response simulation
+                this.current += output * 0.1;
+                this.current = Math.max(0, Math.min(150, this.current)); // Clamp values
+                
+                this.previousError = this.error;
+                this.time++;
+                
+                // Store history for plotting
+                this.history.push({
+                    time: this.time,
+                    current: this.current,
+                    target: this.target,
+                    error: this.error
+                });
+                
+                if (this.history.length > this.maxHistory) {
+                    this.history.shift();
+                }
+            }
+            
+            draw() {
+                if (!this.ctx) return;
+                
+                const width = this.canvas.width;
+                const height = this.canvas.height;
+                
+                // Clear canvas
+                this.ctx.clearRect(0, 0, width, height);
+                
+                // Draw grid
+                this.ctx.strokeStyle = '#e0e0e0';
+                this.ctx.lineWidth = 1;
+                
+                for (let i = 0; i <= 10; i++) {
+                    const x = (i / 10) * width;
+                    const y = (i / 10) * height;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x, 0);
+                    this.ctx.lineTo(x, height);
+                    this.ctx.stroke();
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, y);
+                    this.ctx.lineTo(width, y);
+                    this.ctx.stroke();
+                }
+                
+                if (this.history.length > 1) {
+                    // Draw target line
+                    this.ctx.strokeStyle = '#38a169';
+                    this.ctx.lineWidth = 2;
+                    this.ctx.setLineDash([5, 5]);
+                    const targetY = height - (this.target / 150) * height;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, targetY);
+                    this.ctx.lineTo(width, targetY);
+                    this.ctx.stroke();
+                    
+                    // Draw current value line
+                    this.ctx.strokeStyle = '#3182ce';
+                    this.ctx.lineWidth = 3;
+                    this.ctx.setLineDash([]);
+                    this.ctx.beginPath();
+                    
+                    const startIndex = Math.max(0, this.history.length - this.maxHistory);
+                    for (let i = startIndex; i < this.history.length; i++) {
+                        const x = ((i - startIndex) / this.maxHistory) * width;
+                        const y = height - (this.history[i].current / 150) * height;
+                        
+                        if (i === startIndex) {
+                            this.ctx.moveTo(x, y);
+                        } else {
+                            this.ctx.lineTo(x, y);
+                        }
+                    }
+                    this.ctx.stroke();
+                }
+            }
+            
+            updateDisplay() {
+                // Update numeric displays
+                const targetElement = document.getElementById('target-value');
+                const currentElement = document.getElementById('current-value');
+                const errorElement = document.getElementById('error-value');
+                
+                if (targetElement) targetElement.textContent = this.target.toFixed(1);
+                if (currentElement) currentElement.textContent = this.current.toFixed(1);
+                if (errorElement) errorElement.textContent = this.error.toFixed(1);
+                
+                this.draw();
+            }
+            
+            startSimulation() {
+                this.isRunning = true;
+                const simulate = () => {
+                    if (this.isRunning) {
+                        this.calculatePID();
+                        this.updateDisplay();
+                        setTimeout(simulate, 100); // 10 FPS
+                    }
+                };
+                simulate();
+            }
+            
+            stopSimulation() {
+                this.isRunning = false;
+            }
+        }
+        
+        // Initialize PID Simulator when DOM is ready
+        let pidSimulator;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize PID simulator if elements exist
+            if (document.getElementById('pid-canvas')) {
+                pidSimulator = new PIDSimulator();
+            }
+        });
         
         // Create neural connections after page load
         window.addEventListener('load', createNeuralConnections);
